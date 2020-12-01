@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A09DDF1B-2B7C-442E-B31C-02B2CFBED4FB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HBMLauncher</RootNamespace>
+    <AssemblyName>HBMLauncher</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>HBML.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edit.Designer.cs">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Run.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Run.Designer.cs">
+      <DependentUpon>Run.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Saves.cs" />
+    <Compile Include="Show.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Show.Designer.cs">
+      <DependentUpon>Show.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Slots.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Slots.Designer.cs">
+      <DependentUpon>Slots.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartWin.Designer.cs">
+      <DependentUpon>StartWin.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Edit.resx">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Run.resx">
+      <DependentUpon>Run.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Show.resx">
+      <DependentUpon>Show.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Slots.resx">
+      <DependentUpon>Slots.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartWin.resx">
+      <DependentUpon>StartWin.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Resources\SightDistance_by_0x688.cleo" />
+    <None Include="Resources\Timecyc.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HBMLB1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HBMLB3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HBMLB4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HBML.ico" />
+    <Content Include="Resources\Folder.png" />
+    <None Include="Resources\HBMLRunFile.exe" />
+    <None Include="Resources\zlib1.dll" />
+    <None Include="Resources\img.exe" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

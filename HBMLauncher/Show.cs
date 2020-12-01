@@ -1,0 +1,158 @@
+﻿using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+namespace HBMLauncher
+{
+    public partial class Show : Form
+    {
+        int count = 0;
+        public Show()
+        {
+            InitializeComponent();
+        }
+
+        private void editBtn_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndex >= 0)
+            {
+                Program.Data.numberSelection = listBox1.SelectedIndex;
+                Enabled = false;
+                Edit edit = new Edit();
+                edit.Show();
+                edit.Activate();
+                edit.FormClosed += (obj1, args1) =>
+                {
+                    Enabled = true;
+                    listBox1.Items.Clear();
+                    for (int i = 0; i < Program.saves.Count; i++)
+                    {
+                        listBox1.Items.Add(Program.saves[i].GetName());
+                    }
+                    listBox1.SelectedIndex = Program.Data.numberSelection;
+                };
+            }
+        }
+
+        private void Show_Load(object sender, EventArgs e)
+        {
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\HBMLauncher\saves"))
+            {
+                count = (int)key.GetValue("count");
+            }
+            Program.saves = new List<Saves>();
+            for (int i = 0; i < count; i++)
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\saves\save{i + 1}"))
+                {
+                    using (RegistryKey key2 = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\slot{(int)key.GetValue("slot")}"))
+                    {
+                        Program.saves.Add(new Saves(CutName(key.GetValue("filepath").ToString()),
+                                      (int)key.GetValue("cleop"),
+                                      (int)key.GetValue("csounds"),
+                                      key.GetValue("ip").ToString(),
+                                      key.GetValue("nickname").ToString(),
+                                      key.GetValue("path").ToString(),
+                                      key2.GetValue("name").ToString(),
+                                      (int)key.GetValue("slot")));
+                        listBox1.Items.Add(Program.saves[i].GetName());
+                    }
+                }
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            info.Text = "Информация о выбранном сохранении:\n" +
+                        $"Название: {Program.saves[listBox1.SelectedIndex].GetName()}\n" +
+                        $"Путь к GTA: {Program.saves[listBox1.SelectedIndex].GetGtaPath()}\n" +
+                        $"IP: {Program.saves[listBox1.SelectedIndex].GetIp()}\n" +
+                        $"Nickname: {Program.saves[listBox1.SelectedIndex].GetNickname()}\n" +
+                        $"Слот: {Program.saves[listBox1.SelectedIndex].GetSlot()}\n";
+            if (Program.saves[listBox1.SelectedIndex].GetCleop() == 1)
+                info.Text += "Cleo-прорисовка: Вкл \n";
+            else info.Text += "Cleo-прорисовка: Выкл \n";
+            if (Program.saves[listBox1.SelectedIndex].GetCsounds() == 1)
+                info.Text += "CustomSounds: Вкл \n";
+            else info.Text += "CustomSounds: Выкл \n";
+        }
+
+        string CutName(string str)
+        {
+            char[] str1 = str.ToCharArray();
+            for (int i = str1.Length - 1; i > -1; i--)
+            {
+                if (str1[i] == '.')
+                {
+                    str = str.Remove(i, str.Length - i);
+                }
+                if (str1[i] == '\\')
+                {
+                    str = str.Remove(0, i + 1);
+                    break;
+                }
+            }
+            return str;
+        }
+
+        private void removeBtn_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите удалить сохранение?", "Подтверждение действия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if (listBox1.SelectedIndex >= 0)
+                {
+                    count--;
+                    Registry.CurrentUser.CreateSubKey(@"Software\HBMLauncher\saves").SetValue("count", count);
+                    Registry.CurrentUser.DeleteSubKeyTree($@"Software\HBMLauncher\saves\save{listBox1.SelectedIndex + 1}");
+                    Program.saves.Remove(Program.saves[listBox1.SelectedIndex]);
+                    if (listBox1.SelectedIndex < count)
+                    {
+                        for (int i = listBox1.SelectedIndex + 2; i < count + 2; i++)
+                        {
+                            RenameSubKey(Registry.CurrentUser, $@"Software\HBMLauncher\saves\save{i}", $@"Software\HBMLauncher\saves\save{i - 1}");
+                        }
+                    }
+                    listBox1.Items.Clear();
+                    for (int i = 0; i < Program.saves.Count; i++)
+                    {
+                        listBox1.Items.Add(Program.saves[i].GetName());
+                    }
+                }
+            }
+        }
+
+        public bool RenameSubKey(RegistryKey parentKey,
+            string subKeyName, string newSubKeyName)
+        {
+            CopyKey(parentKey, subKeyName, newSubKeyName);
+            parentKey.DeleteSubKeyTree(subKeyName);
+            return true;
+        }
+
+        public bool CopyKey(RegistryKey parentKey,
+            string keyNameToCopy, string newKeyName)
+        {
+            RegistryKey destinationKey = parentKey.CreateSubKey(newKeyName);
+            RegistryKey sourceKey = parentKey.OpenSubKey(keyNameToCopy);
+            RecurseCopyKey(sourceKey, destinationKey);
+            return true;
+        }
+
+        private void RecurseCopyKey(RegistryKey sourceKey, RegistryKey destinationKey)
+        {
+            foreach (string valueName in sourceKey.GetValueNames())
+            {
+                object objValue = sourceKey.GetValue(valueName);
+                RegistryValueKind valKind = sourceKey.GetValueKind(valueName);
+                destinationKey.SetValue(valueName, objValue, valKind);
+            }
+            foreach (string sourceSubKeyName in sourceKey.GetSubKeyNames())
+            {
+                RegistryKey sourceSubKey = sourceKey.OpenSubKey(sourceSubKeyName);
+                RegistryKey destSubKey = destinationKey.CreateSubKey(sourceSubKeyName);
+                RecurseCopyKey(sourceSubKey, destSubKey);
+            }
+        }
+    }
+}

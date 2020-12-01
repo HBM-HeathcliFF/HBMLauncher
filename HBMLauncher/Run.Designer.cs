@@ -1,0 +1,145 @@
+﻿namespace HBMLauncher
+{
+    partial class Run
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Run));
+            this.save = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nicktb = new System.Windows.Forms.TextBox();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.iptb = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // save
+            // 
+            this.save.BackColor = System.Drawing.Color.Chartreuse;
+            this.save.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.save.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.save.Location = new System.Drawing.Point(209, 19);
+            this.save.Name = "save";
+            this.save.Size = new System.Drawing.Size(75, 23);
+            this.save.TabIndex = 0;
+            this.save.Text = "Сохранить";
+            this.save.UseVisualStyleBackColor = false;
+            this.save.Click += new System.EventHandler(this.Save_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.Chartreuse;
+            this.label1.Location = new System.Drawing.Point(11, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(145, 15);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Введите свой nickname:";
+            // 
+            // nicktb
+            // 
+            this.nicktb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nicktb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nicktb.Location = new System.Drawing.Point(12, 19);
+            this.nicktb.Name = "nicktb";
+            this.nicktb.Size = new System.Drawing.Size(191, 21);
+            this.nicktb.TabIndex = 2;
+            this.nicktb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.BackColor = System.Drawing.Color.Chartreuse;
+            this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cancelBtn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cancelBtn.Location = new System.Drawing.Point(209, 54);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.cancelBtn.TabIndex = 3;
+            this.cancelBtn.Text = "Отмена";
+            this.cancelBtn.UseVisualStyleBackColor = false;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // iptb
+            // 
+            this.iptb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.iptb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.iptb.Location = new System.Drawing.Point(12, 57);
+            this.iptb.Name = "iptb";
+            this.iptb.Size = new System.Drawing.Size(191, 21);
+            this.iptb.TabIndex = 4;
+            this.iptb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Black;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.Chartreuse;
+            this.label2.Location = new System.Drawing.Point(11, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(119, 15);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Введите IP сервера:";
+            // 
+            // Run
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::HBMLauncher.Properties.Resources.HBMLB3;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(292, 84);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.iptb);
+            this.Controls.Add(this.cancelBtn);
+            this.Controls.Add(this.nicktb);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.save);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(308, 122);
+            this.MinimumSize = new System.Drawing.Size(308, 122);
+            this.Name = "Run";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "HBM Launcher";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button save;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox nicktb;
+        private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.TextBox iptb;
+        private System.Windows.Forms.Label label2;
+    }
+}

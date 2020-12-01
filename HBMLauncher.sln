@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBMLauncher", "HBMLauncher\HBMLauncher.csproj", "{A09DDF1B-2B7C-442E-B31C-02B2CFBED4FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HBMLRunFile", "..\HBMLauncherN\HBMLauncherN\HBMLRunFile.csproj", "{EF87596F-D919-4CDF-B9BA-385C1AB05D47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A09DDF1B-2B7C-442E-B31C-02B2CFBED4FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A09DDF1B-2B7C-442E-B31C-02B2CFBED4FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A09DDF1B-2B7C-442E-B31C-02B2CFBED4FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A09DDF1B-2B7C-442E-B31C-02B2CFBED4FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF87596F-D919-4CDF-B9BA-385C1AB05D47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF87596F-D919-4CDF-B9BA-385C1AB05D47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF87596F-D919-4CDF-B9BA-385C1AB05D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF87596F-D919-4CDF-B9BA-385C1AB05D47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E35D420E-608F-454D-B7C8-57DE9AFC8CBB}
+	EndGlobalSection
+EndGlobal
