@@ -8,9 +8,6 @@ namespace HBMLauncher
 {
     static class Program
     {
-        /// <summary>
-        /// Главная точка входа для приложения.
-        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -41,11 +38,7 @@ namespace HBMLauncher
         public static class Data
         {
             public static string[] names;
-            public static int slotnumber { get; set; }
-            public static string slotname { get; set; }
             public static bool isNext { get; set; }
-            public static bool isDone { get; set; }
-            public static bool isOtherGTA { get; set; }
             public static bool isSave { get; set; }
             public static string ip { get; set; }
             public static string nickname { get; set; }

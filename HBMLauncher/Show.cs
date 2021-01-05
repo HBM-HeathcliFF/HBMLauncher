@@ -46,18 +46,13 @@ namespace HBMLauncher
             {
                 using (RegistryKey key = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\saves\save{i + 1}"))
                 {
-                    using (RegistryKey key2 = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\slot{(int)key.GetValue("slot")}"))
-                    {
-                        Program.saves.Add(new Saves(CutName(key.GetValue("filepath").ToString()),
+                    Program.saves.Add(new Saves(CutName(key.GetValue("filepath").ToString()),
                                       (int)key.GetValue("cleop"),
                                       (int)key.GetValue("csounds"),
                                       key.GetValue("ip").ToString(),
                                       key.GetValue("nickname").ToString(),
-                                      key.GetValue("path").ToString(),
-                                      key2.GetValue("name").ToString(),
-                                      (int)key.GetValue("slot")));
-                        listBox1.Items.Add(Program.saves[i].GetName());
-                    }
+                                      key.GetValue("path").ToString()));
+                    listBox1.Items.Add(Program.saves[i].GetName());
                 }
             }
         }
@@ -68,8 +63,7 @@ namespace HBMLauncher
                         $"Название: {Program.saves[listBox1.SelectedIndex].GetName()}\n" +
                         $"Путь к GTA: {Program.saves[listBox1.SelectedIndex].GetGtaPath()}\n" +
                         $"IP: {Program.saves[listBox1.SelectedIndex].GetIp()}\n" +
-                        $"Nickname: {Program.saves[listBox1.SelectedIndex].GetNickname()}\n" +
-                        $"Слот: {Program.saves[listBox1.SelectedIndex].GetSlot()}\n";
+                        $"Nickname: {Program.saves[listBox1.SelectedIndex].GetNickname()}\n";
             if (Program.saves[listBox1.SelectedIndex].GetCleop() == 1)
                 info.Text += "Cleo-прорисовка: Вкл \n";
             else info.Text += "Cleo-прорисовка: Выкл \n";

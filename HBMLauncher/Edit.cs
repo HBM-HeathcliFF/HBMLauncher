@@ -20,18 +20,6 @@ namespace HBMLauncher
             folderBtn.Location = new Point(gtaPathL.Location.X + gtaPathL.Size.Width + 3, folderBtn.Location.Y);
             tbip.Text = $"{Program.saves[Program.Data.numberSelection].GetIp()}";
             tbnickname.Text = $"{Program.saves[Program.Data.numberSelection].GetNickname()}";
-            try
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    using (RegistryKey key = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\slot{i + 1}"))
-                    {
-                        slotCB.Items.Add(key.GetValue("name").ToString());
-                    }
-                }
-            }
-            catch (Exception) {}
-            slotCB.SelectedIndex = Program.saves[Program.Data.numberSelection].GetNumberSlot() - 1;
             cleopCB.Items.Add("Выкл");
             cleopCB.Items.Add("Вкл");
             if (Program.saves[Program.Data.numberSelection].GetCleop() == 1) cleopCB.SelectedIndex = 1;
@@ -56,9 +44,6 @@ namespace HBMLauncher
             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("ip", tbip.Text);
             Program.saves[Program.Data.numberSelection].SetNickname(tbnickname.Text);
             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("nickname", tbnickname.Text);
-            Program.saves[Program.Data.numberSelection].SetSlot(slotCB.SelectedItem.ToString());
-            Program.saves[Program.Data.numberSelection].SetNumberSlot(slotCB.SelectedIndex + 1);
-            Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("slot", slotCB.SelectedIndex + 1);
             Program.saves[Program.Data.numberSelection].SetCleop(cleopCB.SelectedIndex);
             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("cleop", cleopCB.SelectedIndex);
             Program.saves[Program.Data.numberSelection].SetCsounds(csoundsCB.SelectedIndex);

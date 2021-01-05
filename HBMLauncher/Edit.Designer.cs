@@ -35,12 +35,10 @@
             this.gtaPathL = new System.Windows.Forms.Label();
             this.ipL = new System.Windows.Forms.Label();
             this.nicknameL = new System.Windows.Forms.Label();
-            this.slotL = new System.Windows.Forms.Label();
             this.cleopL = new System.Windows.Forms.Label();
             this.csoundsL = new System.Windows.Forms.Label();
             this.tbip = new System.Windows.Forms.TextBox();
             this.tbnickname = new System.Windows.Forms.TextBox();
-            this.slotCB = new System.Windows.Forms.ComboBox();
             this.csoundsCB = new System.Windows.Forms.ComboBox();
             this.cleopCB = new System.Windows.Forms.ComboBox();
             this.folderBtn = new System.Windows.Forms.Button();
@@ -48,7 +46,7 @@
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(238, 167);
+            this.cancelBtn.Location = new System.Drawing.Point(238, 145);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 23);
             this.cancelBtn.TabIndex = 0;
@@ -58,7 +56,7 @@
             // 
             // confirmBtn
             // 
-            this.confirmBtn.Location = new System.Drawing.Point(319, 167);
+            this.confirmBtn.Location = new System.Drawing.Point(319, 145);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(75, 23);
             this.confirmBtn.TabIndex = 1;
@@ -102,19 +100,10 @@
             this.nicknameL.TabIndex = 5;
             this.nicknameL.Text = "Nickname: ";
             // 
-            // slotL
-            // 
-            this.slotL.AutoSize = true;
-            this.slotL.Location = new System.Drawing.Point(7, 97);
-            this.slotL.Name = "slotL";
-            this.slotL.Size = new System.Drawing.Size(37, 13);
-            this.slotL.TabIndex = 6;
-            this.slotL.Text = "Слот: ";
-            // 
             // cleopL
             // 
             this.cleopL.AutoSize = true;
-            this.cleopL.Location = new System.Drawing.Point(7, 120);
+            this.cleopL.Location = new System.Drawing.Point(7, 97);
             this.cleopL.Name = "cleopL";
             this.cleopL.Size = new System.Drawing.Size(97, 13);
             this.cleopL.TabIndex = 7;
@@ -123,7 +112,7 @@
             // csoundsL
             // 
             this.csoundsL.AutoSize = true;
-            this.csoundsL.Location = new System.Drawing.Point(7, 143);
+            this.csoundsL.Location = new System.Drawing.Point(7, 120);
             this.csoundsL.Name = "csoundsL";
             this.csoundsL.Size = new System.Drawing.Size(84, 13);
             this.csoundsL.TabIndex = 8;
@@ -143,18 +132,10 @@
             this.tbnickname.Size = new System.Drawing.Size(144, 20);
             this.tbnickname.TabIndex = 11;
             // 
-            // slotCB
-            // 
-            this.slotCB.FormattingEnabled = true;
-            this.slotCB.Location = new System.Drawing.Point(40, 94);
-            this.slotCB.Name = "slotCB";
-            this.slotCB.Size = new System.Drawing.Size(95, 21);
-            this.slotCB.TabIndex = 12;
-            // 
             // csoundsCB
             // 
             this.csoundsCB.FormattingEnabled = true;
-            this.csoundsCB.Location = new System.Drawing.Point(86, 140);
+            this.csoundsCB.Location = new System.Drawing.Point(86, 117);
             this.csoundsCB.Name = "csoundsCB";
             this.csoundsCB.Size = new System.Drawing.Size(49, 21);
             this.csoundsCB.TabIndex = 14;
@@ -162,7 +143,7 @@
             // cleopCB
             // 
             this.cleopCB.FormattingEnabled = true;
-            this.cleopCB.Location = new System.Drawing.Point(100, 117);
+            this.cleopCB.Location = new System.Drawing.Point(100, 94);
             this.cleopCB.Name = "cleopCB";
             this.cleopCB.Size = new System.Drawing.Size(49, 21);
             this.cleopCB.TabIndex = 15;
@@ -182,16 +163,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 196);
+            this.ClientSize = new System.Drawing.Size(401, 172);
             this.Controls.Add(this.cleopCB);
             this.Controls.Add(this.csoundsCB);
-            this.Controls.Add(this.slotCB);
             this.Controls.Add(this.tbnickname);
             this.Controls.Add(this.tbip);
             this.Controls.Add(this.folderBtn);
             this.Controls.Add(this.csoundsL);
             this.Controls.Add(this.cleopL);
-            this.Controls.Add(this.slotL);
             this.Controls.Add(this.nicknameL);
             this.Controls.Add(this.ipL);
             this.Controls.Add(this.gtaPathL);
@@ -200,8 +179,8 @@
             this.Controls.Add(this.cancelBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(417, 234);
-            this.MinimumSize = new System.Drawing.Size(417, 234);
+            this.MaximumSize = new System.Drawing.Size(417, 210);
+            this.MinimumSize = new System.Drawing.Size(417, 210);
             this.Name = "Edit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение сохранения";
@@ -219,13 +198,11 @@
         private System.Windows.Forms.Label gtaPathL;
         private System.Windows.Forms.Label ipL;
         private System.Windows.Forms.Label nicknameL;
-        private System.Windows.Forms.Label slotL;
         private System.Windows.Forms.Label cleopL;
         private System.Windows.Forms.Label csoundsL;
         private System.Windows.Forms.Button folderBtn;
         private System.Windows.Forms.TextBox tbip;
         private System.Windows.Forms.TextBox tbnickname;
-        private System.Windows.Forms.ComboBox slotCB;
         private System.Windows.Forms.ComboBox csoundsCB;
         private System.Windows.Forms.ComboBox cleopCB;
     }

@@ -3,7 +3,6 @@ using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -15,7 +14,7 @@ namespace HBMLRunFile
         static void Main()
         {
             string gtaPath, ip, nickname;
-            int slot = 0, cleop, csounds;
+            int save = 0, cleop, csounds;
 
             //Поиск сейва
             int countSaves = 0;
@@ -28,19 +27,18 @@ namespace HBMLRunFile
                 {
                     if (key.GetValue("filepath").ToString() == filepath)
                     {
-                        slot = i;
+                        save = i;
                         break;
                     }
                 }
             }
 
             //Получение данных из найденного сейва
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\saves\save{slot}"))
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\saves\save{save}"))
             {
                 gtaPath = (string)key.GetValue("path");
                 cleop = Convert.ToInt32(key.GetValue("cleop"));
                 csounds = Convert.ToInt32(key.GetValue("csounds"));
-                slot = Convert.ToInt32(key.GetValue("slot"));
                 ip = (string)key.GetValue("ip");
                 nickname = (string)key.GetValue("nickname");
             }
@@ -49,7 +47,6 @@ namespace HBMLRunFile
             Registry.CurrentUser.CreateSubKey(@"Software\SAMP").SetValue("gta_sa_exe", $@"{gtaPath}\gta_sa.exe");
             if (nickname != "")
                 Registry.CurrentUser.CreateSubKey(@"Software\SAMP").SetValue("PlayerName", nickname);
-            string[] files = Directory.GetFiles($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\slot{slot}");
 
             //CustomSounds до запуска SA-MP (без исключений)
             string[] text = null, def_vals = null, filesToCopy = null;
@@ -115,73 +112,28 @@ namespace HBMLRunFile
                 }
 
                 //Cleo-прорисовка (вызов исключений)
-                if (cleop == 0 && File.Exists($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo")
-                               && File.Exists($@"{gtaPath}\cleo\Timecyc.cs"))
+                if (cleop == 0)
                 {
                     File.Delete($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo");
                     File.Delete($@"{gtaPath}\cleo\Timecyc.cs");
                 }
-                else if (cleop == 1 && !File.Exists($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo")
-                                    && !File.Exists($@"{gtaPath}\cleo\Timecyc.cs"))
+                else if (cleop == 1)
                 {
                     File.WriteAllBytes($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo", Resources.SightDistance_by_0x688);
                     File.WriteAllBytes($@"{gtaPath}\cleo\Timecyc.cs", Resources.Timecyc);
                 }
 
-                Process[] procs = Process.GetProcessesByName("gta_sa.exe");
-                foreach (var proc in procs)
-                {
-                    if (proc.StartInfo.FileName == $@"{gtaPath}\gta_sa.exe")
-                        throw new Exception();
-                }
-
-                //Скрипт замены файлов карты (если не вызвалось исключение)
-                FileStream file = new FileStream($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\save.txt", FileMode.Create);
-                Encoding win1251 = Encoding.GetEncoding(1251);
-                using (StreamWriter fout = new StreamWriter(file, win1251))
-                {
-                    fout.WriteLine("-open \"" + TwoSlashes($@"{gtaPath}\SAMP\CUSTOM.img") + "\"");
-                    for (int i = 0; i < files.Length; i++)
-                    {
-                        fout.WriteLine("-delete \"" + CutName(files[i]) + "\'");
-                        fout.WriteLine("-import \"" + TwoSlashes($@"{files[i]}") + "\"");
-                    }
-                    fout.WriteLine("-rebuild");
-                    fout.WriteLine("-close");
-                }
-
-                //Батник замены файлов карты (если не вызвалось исключение)
-                file = new FileStream($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\save.bat", FileMode.Create);
-                using (StreamWriter fout = new StreamWriter(file))
-                {
-                    fout.WriteLine("chcp 65001");
-                    fout.WriteLine("\"" + $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\img.exe" + "\" -script \"" + $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\save.txt" + "\"");
-                }
-
-                //Выполнение батника замены файлов карты (если не вызвалось исключение)
+                //Запуск SA-MP
                 bool contin = false;
-                Process p = new Process();
-                p.StartInfo.FileName = $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\save.bat";
-                p.EnableRaisingEvents = true;
-                p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                p.Exited += (s, e) =>
+                if (ip != "" && nickname != "")
                 {
-                    File.Delete($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\save.txt");
-                    File.Delete($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\save.bat");
-                    contin = true;
-
-                    //Запуск SA-MP
-                    if (ip != "" && nickname != "")
-                    {
-                        Process p1 = new Process();
-                        p1.StartInfo.FileName = "cmd";
-                        p1.StartInfo.Arguments = "/c \"" + $@"{gtaPath}\samp.exe" + "\" " + ip;
-                        p1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                        p1.Start();
-                    }
-                    else Process.Start($@"{gtaPath}\samp.exe");
-                };
-                p.Start();
+                    Process p1 = new Process();
+                    p1.StartInfo.FileName = "cmd";
+                    p1.StartInfo.Arguments = "/c \"" + $@"{gtaPath}\samp.exe" + "\" " + ip;
+                    p1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                    p1.Start();
+                }
+                else Process.Start($@"{gtaPath}\samp.exe");
                 while (!contin)
                 {
                     Thread.Sleep(100);
@@ -234,19 +186,6 @@ namespace HBMLRunFile
             }
         }
 
-        static string TwoSlashes(string OSStr)
-        {
-            int index = 0;
-            while (OSStr.IndexOf("\\", index) != -1)
-            {
-                if (index >= OSStr.Length)
-                    break;
-                index = OSStr.IndexOf("\\", index);
-                OSStr = OSStr.Insert(OSStr.IndexOf("\\", index) + 1, "\\");
-                index += 2;
-            }
-            return OSStr;
-        }
         static string CutName(string str)
         {
             char[] str1 = str.ToCharArray();

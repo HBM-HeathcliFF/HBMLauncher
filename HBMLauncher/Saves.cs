@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HBMLauncher
+﻿namespace HBMLauncher
 {
     class Saves
     {
@@ -14,15 +8,13 @@ namespace HBMLauncher
         private string ip;
         private string nickname;
         private string gtaPath;
-        private string slot;
-        private int numberSlot;
 
         public Saves()
         {
 
         }
 
-        public Saves(string name, int cleop, int csounds, string ip, string nickname, string gtaPath, string slot, int numberSlot)
+        public Saves(string name, int cleop, int csounds, string ip, string nickname, string gtaPath)
         {
             this.name = name;
             this.cleop = cleop;
@@ -30,8 +22,6 @@ namespace HBMLauncher
             this.ip = ip;
             this.nickname = nickname;
             this.gtaPath = gtaPath;
-            this.slot = slot;
-            this.numberSlot = numberSlot;
         }
 
         public string GetName()
@@ -64,15 +54,6 @@ namespace HBMLauncher
             return this.gtaPath;
         }
 
-        public string GetSlot()
-        {
-            return this.slot;
-        }
-        public int GetNumberSlot()
-        {
-            return this.numberSlot;
-        }
-
         public void SetName(string name)
         {
             this.name = name;
@@ -101,16 +82,6 @@ namespace HBMLauncher
         public void SetGtaPath(string gtaPath)
         {
             this.gtaPath = gtaPath;
-        }
-
-        public void SetSlot(string slot)
-        {
-            this.slot = slot;
-        }
-
-        public void SetNumberSlot(int numberSlot)
-        {
-            this.numberSlot = numberSlot;
         }
     }
 }

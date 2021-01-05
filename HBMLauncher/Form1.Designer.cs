@@ -30,11 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.cleop = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.slot1 = new System.Windows.Forms.Button();
-            this.slot2 = new System.Windows.Forms.Button();
-            this.slot3 = new System.Windows.Forms.Button();
-            this.slot4 = new System.Windows.Forms.Button();
             this.save = new System.Windows.Forms.Button();
             this.сlose = new System.Windows.Forms.Button();
             this.edit = new System.Windows.Forms.Button();
@@ -59,70 +54,6 @@
             this.cleop.TabIndex = 0;
             this.cleop.Text = "Cleo-прорисовка";
             this.cleop.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.Chartreuse;
-            this.label1.Location = new System.Drawing.Point(11, 67);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Слоты под карты:";
-            // 
-            // slot1
-            // 
-            this.slot1.BackColor = System.Drawing.Color.Chartreuse;
-            this.slot1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.slot1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.slot1.Location = new System.Drawing.Point(11, 87);
-            this.slot1.Name = "slot1";
-            this.slot1.Size = new System.Drawing.Size(81, 35);
-            this.slot1.TabIndex = 2;
-            this.slot1.Text = "+";
-            this.slot1.UseVisualStyleBackColor = false;
-            this.slot1.Click += new System.EventHandler(this.Slot1_Click);
-            // 
-            // slot2
-            // 
-            this.slot2.BackColor = System.Drawing.Color.Chartreuse;
-            this.slot2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.slot2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.slot2.Location = new System.Drawing.Point(98, 87);
-            this.slot2.Name = "slot2";
-            this.slot2.Size = new System.Drawing.Size(81, 34);
-            this.slot2.TabIndex = 3;
-            this.slot2.Text = "+";
-            this.slot2.UseVisualStyleBackColor = false;
-            this.slot2.Click += new System.EventHandler(this.Slot2_Click);
-            // 
-            // slot3
-            // 
-            this.slot3.BackColor = System.Drawing.Color.Chartreuse;
-            this.slot3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.slot3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.slot3.Location = new System.Drawing.Point(185, 87);
-            this.slot3.Name = "slot3";
-            this.slot3.Size = new System.Drawing.Size(81, 34);
-            this.slot3.TabIndex = 4;
-            this.slot3.Text = "+";
-            this.slot3.UseVisualStyleBackColor = false;
-            this.slot3.Click += new System.EventHandler(this.Slot3_Click);
-            // 
-            // slot4
-            // 
-            this.slot4.BackColor = System.Drawing.Color.Chartreuse;
-            this.slot4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.slot4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.slot4.Location = new System.Drawing.Point(272, 87);
-            this.slot4.Name = "slot4";
-            this.slot4.Size = new System.Drawing.Size(81, 34);
-            this.slot4.TabIndex = 5;
-            this.slot4.Text = "+";
-            this.slot4.UseVisualStyleBackColor = false;
-            this.slot4.Click += new System.EventHandler(this.Slot4_Click);
             // 
             // save
             // 
@@ -180,11 +111,11 @@
             this.cancel.BackColor = System.Drawing.Color.Chartreuse;
             this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cancel.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cancel.Location = new System.Drawing.Point(438, 87);
+            this.cancel.Location = new System.Drawing.Point(306, 143);
             this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(75, 34);
+            this.cancel.Size = new System.Drawing.Size(126, 23);
             this.cancel.TabIndex = 11;
-            this.cancel.Text = "Сбросить";
+            this.cancel.Text = "Удалить все";
             this.cancel.UseVisualStyleBackColor = false;
             this.cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
@@ -236,11 +167,6 @@
             this.Controls.Add(this.edit);
             this.Controls.Add(this.сlose);
             this.Controls.Add(this.save);
-            this.Controls.Add(this.slot4);
-            this.Controls.Add(this.slot3);
-            this.Controls.Add(this.slot2);
-            this.Controls.Add(this.slot1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.cleop);
             this.Controls.Add(this.position);
             this.DoubleBuffered = true;
@@ -250,7 +176,7 @@
             this.MinimumSize = new System.Drawing.Size(539, 216);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HBM Launcher v1.2";
+            this.Text = "HBM Launcher v1.4";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -260,16 +186,11 @@
         #endregion
 
         private System.Windows.Forms.CheckBox cleop;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Button сlose;
         private System.Windows.Forms.Button edit;
         private System.Windows.Forms.Label position;
         private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.Button slot1;
-        private System.Windows.Forms.Button slot2;
-        private System.Windows.Forms.Button slot3;
-        private System.Windows.Forms.Button slot4;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.CheckBox csoundsCB;
         private System.Windows.Forms.Button showBtn;

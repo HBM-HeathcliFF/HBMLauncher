@@ -18,15 +18,7 @@ namespace HBMLauncher
         {
             InitializeComponent();
         }
-        string GetName(int index)
-        {
-            string result = "";
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\slot{index}"))
-            {
-                result = key.GetValue("name").ToString();
-            }
-            return result;
-        }
+
         string CutName(string str, ref string pn)
         {
             char[] str1 = str.ToCharArray();
@@ -45,45 +37,8 @@ namespace HBMLauncher
             }
             return str;
         }
-        void FillSlot(int sn, Button but)
-        {
-            if (but.Text == "+")
-            {
-                Enabled = false;
-                Directory.CreateDirectory($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\slot{sn}");
-
-                Form f = new Slots();
-                f.Show();
-                f.FormClosed += (obj, args) =>
-                {
-                    Enabled = true;
-                    if (Program.Data.isDone)
-                    {
-                        but.Text = Program.Data.slotname;
-                        if (sn == 1)
-                        {
-                            slot2.Enabled = true;
-                            slot2.Visible = true;
-                        }
-                        if (sn == 2)
-                        {
-                            slot3.Enabled = true;
-                            slot3.Visible = true;
-                        }
-                        if (sn == 3)
-                        {
-                            slot4.Enabled = true;
-                            slot4.Visible = true;
-                        }
-                    }
-                };
-            }
-        }
         private async void Form1_Load(object sender, EventArgs e)
         {
-            slot2.Visible = false;
-            slot3.Visible = false;
-            slot4.Visible = false;
             Directory.CreateDirectory($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher");
             try
             {
@@ -92,16 +47,6 @@ namespace HBMLauncher
                     gtaPath = key.GetValue("path").ToString();
                     position.Text = "Текущее расположение GTA:\n" + gtaPath;
                 }
-                slot1.Text = GetName(1);
-                slot2.Text = "+";
-                slot2.Visible = true;
-                slot2.Text = GetName(2);
-                slot3.Text = "+";
-                slot3.Visible = true;
-                slot3.Text = GetName(3);
-                slot4.Text = "+";
-                slot4.Visible = true;
-                slot4.Text = GetName(4);
             }
             catch (Exception) { }
 
@@ -116,7 +61,6 @@ namespace HBMLauncher
                 if (!File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\zlib1.dll"))
                     File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\zlib1.dll", Resources.zlib1);
             });
-            Program.Data.slotnumber = 1;
         }
 
         private void Close_Click(object sender, EventArgs e)
@@ -140,30 +84,6 @@ namespace HBMLauncher
             };
         }
 
-        private void Slot1_Click(object sender, EventArgs e)
-        {
-            Program.Data.slotnumber = 1;
-            FillSlot(1, slot1);
-        }
-
-        private void Slot2_Click(object sender, EventArgs e)
-        {
-            Program.Data.slotnumber = 2;
-            FillSlot(2, slot2);
-        }
-
-        private void Slot3_Click(object sender, EventArgs e)
-        {
-            Program.Data.slotnumber = 3;
-            FillSlot(3, slot3);
-        }
-
-        private void Slot4_Click(object sender, EventArgs e)
-        {
-            Program.Data.slotnumber = 4;
-            FillSlot(4, slot4);
-        }
-
         private void showBtn_Click(object sender, EventArgs e)
         {
             Show sh = new Show();
@@ -176,7 +96,7 @@ namespace HBMLauncher
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\HBMLauncher\saves"))
-                { count = (int)key.GetValue("count") + 1; }
+                    count = (int)key.GetValue("count") + 1;
                 if (cleop.Checked) cleopr = 1;
                 else cleopr = 0;
                 if (csoundsCB.Checked) csounds = 1;
@@ -187,7 +107,6 @@ namespace HBMLauncher
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("path", gtaPath);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("cleop", cleopr);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("csounds", csounds);
-                Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("slot", Program.Data.slotnumber);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("filepath", $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{name}.exe");
                 File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{name}.exe", Resources.HBMLRunFile);
                 ShortCut.Create($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{name}.exe", $@"{pn}.lnk", "", "");
@@ -222,18 +141,8 @@ namespace HBMLauncher
 
         private void Cancel_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите очистить слоты и удалить сохранения?", "Подтверждение действия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("Вы действительно хотите удалить все сохранения?", "Подтверждение действия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                try
-                {
-                    for (int i = 1; i < 5; i++)
-                    {
-                        Registry.CurrentUser.DeleteSubKey($@"Software\HBMLauncher\slot{i}");
-                        Directory.Delete($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\slot{i}", true);
-                    }
-                }
-                catch (Exception) { }
-
                 using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\HBMLauncher\saves"))
                 {
                     for (int i = 1; i <= (int)key.GetValue("count"); i++)
@@ -247,17 +156,6 @@ namespace HBMLauncher
                     }
                     Registry.CurrentUser.CreateSubKey(@"Software\HBMLauncher\saves").SetValue("count", 0);
                 }
-
-                slot1.Text = "+";
-                slot2.Text = "+";
-                slot2.Visible = false;
-                slot2.Enabled = false;
-                slot3.Text = "+";
-                slot3.Visible = false;
-                slot3.Enabled = false;
-                slot4.Text = "+";
-                slot4.Visible = false;
-                slot4.Enabled = false;
             }
         }
     }
