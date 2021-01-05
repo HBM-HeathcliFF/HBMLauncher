@@ -124,7 +124,6 @@ namespace HBMLRunFile
                 }
 
                 //Запуск SA-MP
-                bool contin = false;
                 if (ip != "" && nickname != "")
                 {
                     Process p1 = new Process();
@@ -134,10 +133,6 @@ namespace HBMLRunFile
                     p1.Start();
                 }
                 else Process.Start($@"{gtaPath}\samp.exe");
-                while (!contin)
-                {
-                    Thread.Sleep(100);
-                }
 
                 //CustomSounds после запуска SA-MP (если не вызвалось исключение)
                 if (csounds == 1)
