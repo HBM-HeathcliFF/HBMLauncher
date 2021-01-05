@@ -115,15 +115,24 @@ namespace HBMLRunFile
                 }
 
                 //Cleo-прорисовка (вызов исключений)
-                if (cleop == 0)
+                if (cleop == 0 && File.Exists($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo")
+                               && File.Exists($@"{gtaPath}\cleo\Timecyc.cs"))
                 {
                     File.Delete($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo");
                     File.Delete($@"{gtaPath}\cleo\Timecyc.cs");
                 }
-                if (cleop == 1)
+                else if (cleop == 1 && !File.Exists($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo")
+                                    && !File.Exists($@"{gtaPath}\cleo\Timecyc.cs"))
                 {
                     File.WriteAllBytes($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo", Resources.SightDistance_by_0x688);
                     File.WriteAllBytes($@"{gtaPath}\cleo\Timecyc.cs", Resources.Timecyc);
+                }
+
+                Process[] procs = Process.GetProcessesByName("gta_sa.exe");
+                foreach (var proc in procs)
+                {
+                    if (proc.StartInfo.FileName == $@"{gtaPath}\gta_sa.exe")
+                        throw new Exception();
                 }
 
                 //Скрипт замены файлов карты (если не вызвалось исключение)
