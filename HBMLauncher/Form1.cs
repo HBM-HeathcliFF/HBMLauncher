@@ -11,6 +11,11 @@ namespace HBMLauncher
 {
     public partial class Form1 : Form
     {
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(IntPtr hwnd, int wmsg, int wparam, int lparam);
+
         string gtaPath;
         int count, cleopr, csounds;
 
@@ -48,9 +53,12 @@ namespace HBMLauncher
                     position.Text = "Текущее расположение GTA:\n" + gtaPath;
                 }
             }
-            catch (Exception) { }
+            catch (Exception) 
+            {
+                position.Text = "Текущее расположение GTA:\n" + "Не указано.";
+            }
 
-            for (Opacity = 0; Opacity < .96; Opacity += 0.02)
+            for (Opacity = 0; Opacity < 100; Opacity += 0.02)
             {
                 await Task.Delay(10);
             }
@@ -63,25 +71,25 @@ namespace HBMLauncher
             });
         }
 
-        private void Close_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void Edit_Click(object sender, EventArgs e)
         {
-            Enabled = false;
-            Form f = new StartWin();
-            f.Show();
-            f.FormClosed += (obj, args) =>
-            { 
-                Enabled = true;
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\HBMLauncher"))
+            using (var fbd = new FolderBrowserDialog())
+            {
+                fbd.Description = "Выберите папку с GTA";
+                DialogResult result = fbd.ShowDialog();
+                fbd.RootFolder = Environment.SpecialFolder.MyComputer;
+
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    gtaPath = key.GetValue("path").ToString();
-                    position.Text = "Текущее расположение GTA:\n" + gtaPath;
+                    if (File.Exists($@"{fbd.SelectedPath}\samp.exe"))
+                    {
+                        gtaPath = fbd.SelectedPath;
+                        Registry.CurrentUser.CreateSubKey(@"Software\HBMLauncher").SetValue("path", gtaPath);
+                        position.Text = "Текущее расположение GTA:\n" + gtaPath;
+                    }
+                    else MessageBox.Show("Указанная папка не GTA", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            };
+            }        
         }
 
         private void showBtn_Click(object sender, EventArgs e)
@@ -89,6 +97,42 @@ namespace HBMLauncher
             Show sh = new Show();
             sh.Show();
             sh.Activate();
+        }
+
+        private void MenuBtn_Click(object sender, EventArgs e)
+        {
+            if (MenuVertical.Width == 170) MenuVertical.Width = 40;
+            else MenuVertical.Width = 170;
+        }
+
+        private void MenuHorizontal_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MinBtn_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void MaxBtn_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+            NormalBtn.Visible = true;
+            MaxBtn.Visible = false;
+        }
+
+        private void NormalBtn_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Normal;
+            MaxBtn.Visible = true;
+            NormalBtn.Visible = false;
         }
 
         private void Save_Click(object sender, EventArgs e)

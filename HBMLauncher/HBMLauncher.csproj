@@ -82,12 +82,6 @@
     <Compile Include="Show.Designer.cs">
       <DependentUpon>Show.cs</DependentUpon>
     </Compile>
-    <Compile Include="StartWin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StartWin.Designer.cs">
-      <DependentUpon>StartWin.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,9 +90,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Show.resx">
       <DependentUpon>Show.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StartWin.resx">
-      <DependentUpon>StartWin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Resources\SightDistance_by_0x688.cleo" />
     <None Include="Resources\Timecyc.cs" />
@@ -134,10 +125,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HBML.ico" />
+    <Content Include="Resources\Close.png" />
+    <Content Include="Resources\Delete.png" />
+    <Content Include="Resources\Edit.png" />
     <Content Include="Resources\Folder.png" />
+    <None Include="Resources\Max.png" />
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\logo1.png" />
+    <None Include="Resources\logo2.png" />
+    <Content Include="Resources\Menu.png" />
+    <None Include="Resources\Normal.png" />
+    <None Include="Resources\Min.png" />
+    <Content Include="Resources\Save1.png" />
+    <Content Include="Resources\Show.png" />
     <None Include="Resources\HBMLRunFile.exe" />
     <None Include="Resources\zlib1.dll" />
     <None Include="Resources\img.exe" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
