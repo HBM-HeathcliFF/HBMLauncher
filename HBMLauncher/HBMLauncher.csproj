@@ -115,15 +115,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\HBMLB1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\HBMLB3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\HBMLB4.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="HBML.ico" />
     <None Include="Resources\Close.png" />
     <Content Include="Resources\Delete.png" />
