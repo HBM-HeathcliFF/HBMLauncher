@@ -125,18 +125,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HBML.ico" />
-    <Content Include="Resources\Close.png" />
+    <None Include="Resources\Close.png" />
     <Content Include="Resources\Delete.png" />
     <Content Include="Resources\Edit.png" />
     <Content Include="Resources\Folder.png" />
     <None Include="Resources\Max.png" />
     <None Include="Resources\logo.png" />
-    <None Include="Resources\logo1.png" />
-    <None Include="Resources\logo2.png" />
+    <Content Include="Resources\header.png" />
     <Content Include="Resources\Menu.png" />
     <None Include="Resources\Normal.png" />
     <None Include="Resources\Min.png" />
-    <Content Include="Resources\Save1.png" />
+    <None Include="Resources\Save.png" />
     <Content Include="Resources\Show.png" />
     <None Include="Resources\HBMLRunFile.exe" />
     <None Include="Resources\zlib1.dll" />

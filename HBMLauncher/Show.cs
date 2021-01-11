@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace HBMLauncher
@@ -94,6 +95,10 @@ namespace HBMLauncher
         {
             if (MessageBox.Show("Вы действительно хотите удалить сохранение?", "Подтверждение действия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\saves\save{listBox1.SelectedIndex + 1}"))
+                {
+                    File.Delete(key.GetValue("filepath").ToString());
+                }
                 if (listBox1.SelectedIndex >= 0)
                 {
                     count--;

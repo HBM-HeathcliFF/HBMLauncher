@@ -11,36 +11,12 @@ namespace HBMLauncher
 {
     public partial class Form1 : Form
     {
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(IntPtr hwnd, int wmsg, int wparam, int lparam);
-
         string gtaPath;
         int count, cleopr, csounds;
 
         public Form1()
         {
             InitializeComponent();
-        }
-
-        string CutName(string str, ref string pn)
-        {
-            char[] str1 = str.ToCharArray();
-            for (int i = str1.Length - 1; i > -1; i--)
-            {
-                if (str1[i] == '.')
-                {
-                    str = str.Remove(i, str.Length - i);
-                    pn = str;
-                }
-                if (str1[i] == '\\')
-                { 
-                    str = str.Remove(0, i + 1);
-                    break;
-                }
-            }
-            return str;
         }
         private async void Form1_Load(object sender, EventArgs e)
         {
@@ -71,7 +47,27 @@ namespace HBMLauncher
             });
         }
 
-        private void Edit_Click(object sender, EventArgs e)
+        #region Menu
+        string CutName(string str, ref string pn)
+        {
+            char[] str1 = str.ToCharArray();
+            for (int i = str1.Length - 1; i > -1; i--)
+            {
+                if (str1[i] == '.')
+                {
+                    str = str.Remove(i, str.Length - i);
+                    pn = str;
+                }
+                if (str1[i] == '\\')
+                {
+                    str = str.Remove(0, i + 1);
+                    break;
+                }
+            }
+            return str;
+        }
+
+        private void EditBtn_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
             {
@@ -89,53 +85,9 @@ namespace HBMLauncher
                     }
                     else MessageBox.Show("Указанная папка не GTA", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }        
+            }
         }
-
-        private void showBtn_Click(object sender, EventArgs e)
-        {
-            Show sh = new Show();
-            sh.Show();
-            sh.Activate();
-        }
-
-        private void MenuBtn_Click(object sender, EventArgs e)
-        {
-            if (MenuVertical.Width == 170) MenuVertical.Width = 40;
-            else MenuVertical.Width = 170;
-        }
-
-        private void MenuHorizontal_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void CloseBtn_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void MinBtn_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-
-        private void MaxBtn_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Maximized;
-            NormalBtn.Visible = true;
-            MaxBtn.Visible = false;
-        }
-
-        private void NormalBtn_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Normal;
-            MaxBtn.Visible = true;
-            NormalBtn.Visible = false;
-        }
-
-        private void Save_Click(object sender, EventArgs e)
+        private void SaveBtn_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -152,6 +104,8 @@ namespace HBMLauncher
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("cleop", cleopr);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("csounds", csounds);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("filepath", $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{name}.exe");
+                Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("ip", "");
+                Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("nickname", "");
                 File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{name}.exe", Resources.HBMLRunFile);
                 ShortCut.Create($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{name}.exe", $@"{pn}.lnk", "", "");
                 if (MessageBox.Show("Вы хотите указать IP сервера и ник для запуска?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -167,23 +121,18 @@ namespace HBMLauncher
                             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("ip", Program.Data.ip);
                             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("nickname", Program.Data.nickname);
                         }
-                        else
-                        {
-                            Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("ip", "");
-                            Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("nickname", "");
-                        }
                         Enabled = true;
                     };
                 }
-                else
-                {
-                    Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("ip", "");
-                    Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("nickname", "");
-                }
             }
         }
-
-        private void Cancel_Click(object sender, EventArgs e)
+        private void ShowBtn_Click(object sender, EventArgs e)
+        {
+            Show sh = new Show();
+            sh.Show();
+            sh.Activate();
+        }
+        private void DeleteBtn_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить все сохранения?", "Подтверждение действия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
@@ -202,7 +151,50 @@ namespace HBMLauncher
                 }
             }
         }
+        #endregion
+
+        #region Header
+        private void MenuBtn_Click(object sender, EventArgs e)
+        {
+            if (MenuVertical.Width == 170) MenuVertical.Width = 40;
+            else MenuVertical.Width = 170;
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(IntPtr hwnd, int wmsg, int wparam, int lparam);
+        private void MenuHorizontal_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        #region Header's control buttons
+        private void CloseBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void MinBtn_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+        private void MaxBtn_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+            NormalBtn.Visible = true;
+            MaxBtn.Visible = false;
+        }
+        private void NormalBtn_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Normal;
+            MaxBtn.Visible = true;
+            NormalBtn.Visible = false;
+        }
+        #endregion
+        #endregion
     }
+
     static class ShellLink
     {
         [ComImport,
