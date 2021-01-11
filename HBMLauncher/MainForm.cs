@@ -9,12 +9,12 @@ using System.Runtime.InteropServices;
 
 namespace HBMLauncher
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         string gtaPath;
         int count, cleopr, csounds;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }

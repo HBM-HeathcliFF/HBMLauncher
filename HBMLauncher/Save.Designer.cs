@@ -149,7 +149,6 @@
             this.Name = "Save";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HBM Launcher";
-            this.Load += new System.EventHandler(this.Save_Load);
             ((System.ComponentModel.ISupportInitialize)(this.header)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

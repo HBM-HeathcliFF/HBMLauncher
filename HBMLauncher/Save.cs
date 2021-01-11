@@ -55,9 +55,13 @@ namespace HBMLauncher
         {
             Program.Data.ip = iptb.Text;
             Program.Data.nickname = nicktb.Text;
-            using (StreamWriter fout = new StreamWriter($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Nicknames.txt", true))
+            string temp = File.ReadAllText($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Nicknames.txt");
+            if (!temp.Contains(nicktb.Text))
             {
-                fout.WriteLine(nicktb.Text);
+                using (StreamWriter fout = new StreamWriter($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Nicknames.txt", true))
+                {
+                    fout.WriteLine(nicktb.Text);
+                }
             }
             Program.Data.isSave = true;
             Close();
@@ -66,11 +70,6 @@ namespace HBMLauncher
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void Save_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
