@@ -52,7 +52,7 @@
             this.cancelBtn.TabIndex = 0;
             this.cancelBtn.Text = "Отмена";
             this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            this.cancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // confirmBtn
             // 
@@ -62,7 +62,7 @@
             this.confirmBtn.TabIndex = 1;
             this.confirmBtn.Text = "Применить";
             this.confirmBtn.UseVisualStyleBackColor = true;
-            this.confirmBtn.Click += new System.EventHandler(this.confirmBtn_Click);
+            this.confirmBtn.Click += new System.EventHandler(this.ConfirmBtn_Click);
             // 
             // nameL
             // 
@@ -157,7 +157,7 @@
             this.folderBtn.Size = new System.Drawing.Size(26, 23);
             this.folderBtn.TabIndex = 9;
             this.folderBtn.UseVisualStyleBackColor = true;
-            this.folderBtn.Click += new System.EventHandler(this.folderBtn_Click);
+            this.folderBtn.Click += new System.EventHandler(this.FolderBtn_Click);
             // 
             // Edit
             // 

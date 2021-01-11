@@ -14,7 +14,7 @@ namespace HBMLauncher
             InitializeComponent();
         }
 
-        private void editBtn_Click(object sender, EventArgs e)
+        private void EditBtn_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex >= 0)
             {
@@ -58,7 +58,7 @@ namespace HBMLauncher
             }
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             info.Text = "Информация о выбранном сохранении:\n" +
                         $"Название: {Program.saves[listBox1.SelectedIndex].GetName()}\n" +
@@ -91,7 +91,7 @@ namespace HBMLauncher
             return str;
         }
 
-        private void removeBtn_Click(object sender, EventArgs e)
+        private void RemoveBtn_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Вы действительно хотите удалить сохранение?", "Подтверждение действия", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {

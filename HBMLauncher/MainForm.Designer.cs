@@ -67,7 +67,7 @@
             this.cleop.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cleop.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cleop.ForeColor = System.Drawing.Color.Black;
-            this.cleop.Location = new System.Drawing.Point(3, 106);
+            this.cleop.Location = new System.Drawing.Point(3, 97);
             this.cleop.Name = "cleop";
             this.cleop.Size = new System.Drawing.Size(143, 20);
             this.cleop.TabIndex = 0;
@@ -80,7 +80,7 @@
             this.position.BackColor = System.Drawing.Color.Transparent;
             this.position.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.position.ForeColor = System.Drawing.Color.Black;
-            this.position.Location = new System.Drawing.Point(3, 47);
+            this.position.Location = new System.Drawing.Point(3, 38);
             this.position.Name = "position";
             this.position.Size = new System.Drawing.Size(204, 16);
             this.position.TabIndex = 10;
@@ -101,7 +101,7 @@
             this.csoundsCB.CheckState = System.Windows.Forms.CheckState.Checked;
             this.csoundsCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.csoundsCB.ForeColor = System.Drawing.Color.Black;
-            this.csoundsCB.Location = new System.Drawing.Point(4, 88);
+            this.csoundsCB.Location = new System.Drawing.Point(4, 79);
             this.csoundsCB.Name = "csoundsCB";
             this.csoundsCB.Size = new System.Drawing.Size(125, 20);
             this.csoundsCB.TabIndex = 12;
@@ -239,7 +239,7 @@
             this.MenuHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
             this.MenuHorizontal.Location = new System.Drawing.Point(40, 0);
             this.MenuHorizontal.Name = "MenuHorizontal";
-            this.MenuHorizontal.Size = new System.Drawing.Size(485, 40);
+            this.MenuHorizontal.Size = new System.Drawing.Size(485, 33);
             this.MenuHorizontal.TabIndex = 15;
             this.MenuHorizontal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuHorizontal_MouseDown);
             // 
@@ -296,15 +296,14 @@
             // 
             this.MenuBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MenuBtn.BackgroundImage")));
             this.MenuBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.MenuBtn.Image = ((System.Drawing.Image)(resources.GetObject("MenuBtn.Image")));
-            this.MenuBtn.Location = new System.Drawing.Point(4, 5);
+            this.MenuBtn.Location = new System.Drawing.Point(4, 1);
             this.MenuBtn.Name = "MenuBtn";
             this.MenuBtn.Size = new System.Drawing.Size(30, 30);
             this.MenuBtn.TabIndex = 13;
             this.MenuBtn.TabStop = false;
             this.MenuBtn.Click += new System.EventHandler(this.MenuBtn_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -318,7 +317,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HBM Launcher v1.4";
             this.Load += new System.EventHandler(this.Form1_Load);

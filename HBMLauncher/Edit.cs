@@ -30,12 +30,12 @@ namespace HBMLauncher
             else csoundsCB.SelectedIndex = 0;
         }
 
-        private void cancelBtn_Click(object sender, EventArgs e)
+        private void CancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void confirmBtn_Click(object sender, EventArgs e)
+        private void ConfirmBtn_Click(object sender, EventArgs e)
         {
             string str = gtaPathL.Text.Remove(0, 12);
             Program.saves[Program.Data.numberSelection].SetGtaPath(str);
@@ -52,7 +52,7 @@ namespace HBMLauncher
             this.Close();
         }
 
-        private void folderBtn_Click(object sender, EventArgs e)
+        private void FolderBtn_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
             {

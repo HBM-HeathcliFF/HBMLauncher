@@ -9,11 +9,6 @@
         private string nickname;
         private string gtaPath;
 
-        public Saves()
-        {
-
-        }
-
         public Saves(string name, int cleop, int csounds, string ip, string nickname, string gtaPath)
         {
             this.name = name;
@@ -52,11 +47,6 @@
         public string GetGtaPath()
         {
             return this.gtaPath;
-        }
-
-        public void SetName(string name)
-        {
-            this.name = name;
         }
 
         public void SetCleop(int cleop)
