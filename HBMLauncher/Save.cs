@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace HBMLauncher
 {
-    public partial class Run : Form
+    public partial class Save : Form
     {
-        public Run()
+        public Save()
         {
             InitializeComponent();
             int count = 0;
@@ -51,7 +51,7 @@ namespace HBMLauncher
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void Save_Click(object sender, EventArgs e)
+        private void SaveBtn_Click(object sender, EventArgs e)
         {
             Program.Data.ip = iptb.Text;
             Program.Data.nickname = nicktb.Text;
@@ -66,6 +66,11 @@ namespace HBMLauncher
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Save_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -69,11 +69,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Run.cs">
+    <Compile Include="Save.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Run.Designer.cs">
-      <DependentUpon>Run.cs</DependentUpon>
+    <Compile Include="Save.Designer.cs">
+      <DependentUpon>Save.cs</DependentUpon>
     </Compile>
     <Compile Include="Saves.cs" />
     <Compile Include="Show.cs">
@@ -85,8 +85,8 @@
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Run.resx">
-      <DependentUpon>Run.cs</DependentUpon>
+    <EmbeddedResource Include="Save.resx">
+      <DependentUpon>Save.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Show.resx">
       <DependentUpon>Show.cs</DependentUpon>

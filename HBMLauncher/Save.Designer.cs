@@ -1,6 +1,6 @@
 ﻿namespace HBMLauncher
 {
-    partial class Run
+    partial class Save
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Run));
-            this.save = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Save));
+            this.saveBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.nicktb = new System.Windows.Forms.TextBox();
             this.cancelBtn = new System.Windows.Forms.Button();
@@ -39,19 +39,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.header)).BeginInit();
             this.SuspendLayout();
             // 
-            // save
+            // saveBtn
             // 
-            this.save.BackColor = System.Drawing.Color.White;
-            this.save.FlatAppearance.BorderSize = 2;
-            this.save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.save.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.save.Location = new System.Drawing.Point(106, 109);
-            this.save.Name = "save";
-            this.save.Size = new System.Drawing.Size(94, 28);
-            this.save.TabIndex = 0;
-            this.save.Text = "Сохранить";
-            this.save.UseVisualStyleBackColor = false;
-            this.save.Click += new System.EventHandler(this.Save_Click);
+            this.saveBtn.BackColor = System.Drawing.Color.White;
+            this.saveBtn.FlatAppearance.BorderSize = 2;
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveBtn.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.saveBtn.Location = new System.Drawing.Point(106, 109);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(94, 28);
+            this.saveBtn.TabIndex = 0;
+            this.saveBtn.Text = "Сохранить";
+            this.saveBtn.UseVisualStyleBackColor = false;
+            this.saveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
             // label1
             // 
@@ -125,7 +125,7 @@
             this.header.TabStop = false;
             this.header.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Header_MouseDown);
             // 
-            // Run
+            // Save
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,7 +138,7 @@
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.nicktb);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.save);
+            this.Controls.Add(this.saveBtn);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -146,9 +146,10 @@
             this.MaximumSize = new System.Drawing.Size(209, 147);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(209, 147);
-            this.Name = "Run";
+            this.Name = "Save";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HBM Launcher";
+            this.Load += new System.EventHandler(this.Save_Load);
             ((System.ComponentModel.ISupportInitialize)(this.header)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -157,7 +158,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button save;
+        private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox nicktb;
         private System.Windows.Forms.Button cancelBtn;

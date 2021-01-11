@@ -111,10 +111,10 @@ namespace HBMLauncher
                 if (MessageBox.Show("Вы хотите указать IP сервера и ник для запуска?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Enabled = false;
-                    Run r = new Run();
-                    r.Show();
-                    r.Activate();
-                    r.FormClosed += (obj1, args1) =>
+                    Save save = new Save();
+                    save.Show();
+                    save.Activate();
+                    save.FormClosed += (obj1, args1) =>
                     {
                         if (Program.Data.isSave)
                         {
