@@ -248,7 +248,7 @@
             this.MaxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MaxBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Max;
             this.MaxBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.MaxBtn.Location = new System.Drawing.Point(440, 3);
+            this.MaxBtn.Location = new System.Drawing.Point(442, 3);
             this.MaxBtn.Name = "MaxBtn";
             this.MaxBtn.Size = new System.Drawing.Size(16, 16);
             this.MaxBtn.TabIndex = 16;
@@ -260,7 +260,7 @@
             this.MinBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MinBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Min;
             this.MinBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.MinBtn.Location = new System.Drawing.Point(419, 3);
+            this.MinBtn.Location = new System.Drawing.Point(421, 3);
             this.MinBtn.Name = "MinBtn";
             this.MinBtn.Size = new System.Drawing.Size(16, 16);
             this.MinBtn.TabIndex = 15;
@@ -272,7 +272,7 @@
             this.NormalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.NormalBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Normal;
             this.NormalBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.NormalBtn.Location = new System.Drawing.Point(440, 3);
+            this.NormalBtn.Location = new System.Drawing.Point(442, 3);
             this.NormalBtn.Name = "NormalBtn";
             this.NormalBtn.Size = new System.Drawing.Size(16, 16);
             this.NormalBtn.TabIndex = 14;
@@ -285,7 +285,7 @@
             this.CloseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Close;
             this.CloseBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.CloseBtn.Location = new System.Drawing.Point(461, 3);
+            this.CloseBtn.Location = new System.Drawing.Point(463, 3);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(16, 16);
             this.CloseBtn.TabIndex = 13;

@@ -13,7 +13,6 @@ namespace HBMLauncher
     {
         string gtaPath;
         int count, cleopr, csounds;
-
         public MainForm()
         {
             InitializeComponent();
@@ -128,9 +127,16 @@ namespace HBMLauncher
         }
         private void ShowBtn_Click(object sender, EventArgs e)
         {
+            Enabled = false;
+            Hide();
             Show sh = new Show();
             sh.Show();
             sh.Activate();
+            sh.FormClosed += (obj1, args1) =>
+            {
+                Enabled = true;
+                Show();
+            };
         }
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
@@ -193,6 +199,19 @@ namespace HBMLauncher
         }
         #endregion
         #endregion
+
+        const int WS_MINIMIZEBOX = 0x20000;
+        const int CS_DBLCLKS = 0x8;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= WS_MINIMIZEBOX;
+                cp.ClassStyle |= CS_DBLCLKS;
+                return cp;
+            }
+        }
     }
 
     static class ShellLink

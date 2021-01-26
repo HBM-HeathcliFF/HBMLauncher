@@ -118,7 +118,11 @@
     <Content Include="HBML.ico" />
     <None Include="Resources\Close.png" />
     <Content Include="Resources\Delete.png" />
+    <None Include="Resources\DeleteBA.png" />
+    <None Include="Resources\DeleteBN.png" />
     <Content Include="Resources\Edit.png" />
+    <None Include="Resources\EditBA.png" />
+    <None Include="Resources\EditBN.png" />
     <Content Include="Resources\Folder.png" />
     <None Include="Resources\Max.png" />
     <None Include="Resources\logo.png" />
