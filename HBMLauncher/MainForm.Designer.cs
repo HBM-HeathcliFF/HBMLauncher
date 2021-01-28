@@ -34,7 +34,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.csoundsCB = new System.Windows.Forms.CheckBox();
             this.MenuVertical = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.logoBtn = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ShowBtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
@@ -48,7 +48,7 @@
             this.CloseBtn = new System.Windows.Forms.PictureBox();
             this.MenuBtn = new System.Windows.Forms.PictureBox();
             this.MenuVertical.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelContent.SuspendLayout();
             this.MenuHorizontal.SuspendLayout();
@@ -111,7 +111,7 @@
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.Color.Black;
-            this.MenuVertical.Controls.Add(this.pictureBox2);
+            this.MenuVertical.Controls.Add(this.logoBtn);
             this.MenuVertical.Controls.Add(this.pictureBox1);
             this.MenuVertical.Controls.Add(this.ShowBtn);
             this.MenuVertical.Controls.Add(this.DeleteBtn);
@@ -123,15 +123,16 @@
             this.MenuVertical.Size = new System.Drawing.Size(40, 270);
             this.MenuVertical.TabIndex = 14;
             // 
-            // pictureBox2
+            // logoBtn
             // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Image = global::HBMLauncher.Properties.Resources.logo;
-            this.pictureBox2.Location = new System.Drawing.Point(4, 7);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(160, 30);
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
+            this.logoBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.logoBtn.Image = global::HBMLauncher.Properties.Resources.logo;
+            this.logoBtn.Location = new System.Drawing.Point(4, 7);
+            this.logoBtn.Name = "logoBtn";
+            this.logoBtn.Size = new System.Drawing.Size(160, 30);
+            this.logoBtn.TabIndex = 13;
+            this.logoBtn.TabStop = false;
+            this.logoBtn.Click += new System.EventHandler(this.LogoBtn_Click);
             // 
             // pictureBox1
             // 
@@ -322,7 +323,7 @@
             this.Text = "HBM Launcher v1.4";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MenuVertical.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelContent.ResumeLayout(false);
             this.panelContent.PerformLayout();
@@ -354,7 +355,7 @@
         private System.Windows.Forms.PictureBox NormalBtn;
         private System.Windows.Forms.PictureBox CloseBtn;
         private System.Windows.Forms.PictureBox MaxBtn;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox logoBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

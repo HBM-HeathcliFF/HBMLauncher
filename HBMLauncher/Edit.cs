@@ -32,7 +32,7 @@ namespace HBMLauncher
 
         private void CancelBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
@@ -49,7 +49,7 @@ namespace HBMLauncher
             Program.saves[Program.Data.numberSelection].SetCsounds(csoundsCB.SelectedIndex);
             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("csounds", csoundsCB.SelectedIndex);
 
-            this.Close();
+            Close();
         }
 
         private void FolderBtn_Click(object sender, EventArgs e)

@@ -21,6 +21,7 @@ namespace HBMLauncher
         {
             MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
             Directory.CreateDirectory($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher");
+            Directory.CreateDirectory($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources");
             try
             {
                 using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\HBMLauncher"))
@@ -40,10 +41,10 @@ namespace HBMLauncher
             }
             await Task.Run(() =>
             {
-                if (!File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\img.exe"))
-                    File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\img.exe", Resources.img);
-                if (!File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\zlib1.dll"))
-                    File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\zlib1.dll", Resources.zlib1);
+                if (!File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\img.exe"))
+                    File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\img.exe", Resources.img);
+                if (!File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\zlib1.dll"))
+                    File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\zlib1.dll", Resources.zlib1);
             });
         }
 
@@ -67,6 +68,19 @@ namespace HBMLauncher
             return str;
         }
 
+        private void LogoBtn_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo dir = new DirectoryInfo($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher");
+            if (File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\img.exe"))
+                File.Delete($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\img.exe");
+            if (File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\zlib1.dll"))
+                File.Delete($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\zlib1.dll");
+            foreach (var file in dir.GetFiles())
+            {
+                File.Delete($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{file.Name}");
+                File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{file.Name}", Resources.HBMLRunFile);
+            }
+        }
         private void EditBtn_Click(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())

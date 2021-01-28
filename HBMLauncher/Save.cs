@@ -22,10 +22,10 @@ namespace HBMLauncher
                 iptb.Text = key.GetValue("ip").ToString();
                 nicktb.Text = key.GetValue("nickname").ToString();
             }
-            if (File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Nicknames.txt"))
+            if (File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\Nicknames.txt"))
             {
                 AutoCompleteStringCollection nicknames = new AutoCompleteStringCollection();
-                nicknames.AddRange(File.ReadAllLines($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Nicknames.txt", Encoding.GetEncoding(1251)));
+                nicknames.AddRange(File.ReadAllLines($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\Nicknames.txt", Encoding.GetEncoding(1251)));
                 nicktb.AutoCompleteCustomSource = nicknames;
             }
             AutoCompleteStringCollection source = new AutoCompleteStringCollection()
@@ -55,10 +55,10 @@ namespace HBMLauncher
         {
             Program.Data.ip = iptb.Text;
             Program.Data.nickname = nicktb.Text;
-            string temp = File.ReadAllText($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Nicknames.txt");
+            string temp = File.ReadAllText($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\Nicknames.txt");
             if (!temp.Contains(nicktb.Text))
             {
-                using (StreamWriter fout = new StreamWriter($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Nicknames.txt", true))
+                using (StreamWriter fout = new StreamWriter($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\Nicknames.txt", true))
                 {
                     fout.WriteLine(nicktb.Text);
                 }
@@ -70,19 +70,6 @@ namespace HBMLauncher
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             Close();
-        }
-
-        const int WS_MINIMIZEBOX = 0x20000;
-        const int CS_DBLCLKS = 0x8;
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.Style |= WS_MINIMIZEBOX;
-                cp.ClassStyle |= CS_DBLCLKS;
-                return cp;
-            }
         }
     }
 }
