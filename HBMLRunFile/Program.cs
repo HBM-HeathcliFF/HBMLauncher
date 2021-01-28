@@ -54,10 +54,10 @@ namespace HBMLRunFile
             int filesCount = 0;
             try
             {
-                APPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\SA-MP Audio Plugin";
-                filesCount = Directory.GetFiles($@"{APPath}\audiopacks\default_pack").Length;
                 if (csounds == 1)
                 {
+                    APPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\SA-MP Audio Plugin";
+                    filesCount = Directory.GetFiles($@"{APPath}\audiopacks\default_pack").Length;
                     File.Delete($@"{APPath}\audiopacks\default_pack\maushi8.mp3");
                     using (var streamReader = new StreamReader(new FileStream($@"{APPath}\audio.ini", FileMode.Open)))
                     {
@@ -112,15 +112,41 @@ namespace HBMLRunFile
                 }
 
                 //Cleo-прорисовка (вызов исключений)
+                bool isRun = false;
+                foreach (var process in Process.GetProcessesByName("gta_sa.exe"))
+                {
+                    if (gtaPath == process.StartInfo.FileName &&
+                        File.Exists($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo") &&
+                        File.Exists($@"{gtaPath}\cleo\Timecyc.cs"))
+                    {
+                        isRun = true;
+                    }
+                }
                 if (cleop == 0)
                 {
-                    File.Delete($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo");
-                    File.Delete($@"{gtaPath}\cleo\Timecyc.cs");
+                    if (File.Exists($@"{gtaPath}\cleo\Timecyc.cs"))
+                    {
+                        if (isRun) throw new Exception();
+                        else File.Delete($@"{gtaPath}\cleo\Timecyc.cs");
+                    }
+                    if (File.Exists($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo"))
+                    {
+                        if (isRun) throw new Exception();
+                        else File.Delete($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo");
+                    }
                 }
                 else if (cleop == 1)
                 {
-                    File.WriteAllBytes($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo", Resources.SightDistance_by_0x688);
-                    File.WriteAllBytes($@"{gtaPath}\cleo\Timecyc.cs", Resources.Timecyc);
+                    if (!File.Exists($@"{gtaPath}\cleo\Timecyc.cs"))
+                    {
+                        if (isRun) throw new Exception();
+                        else File.WriteAllBytes($@"{gtaPath}\cleo\Timecyc.cs", Resources.Timecyc);
+                    }
+                    if (!File.Exists($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo"))
+                    {
+                        if (isRun) throw new Exception();
+                        else File.WriteAllBytes($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo", Resources.SightDistance_by_0x688);
+                    }
                 }
 
                 //Запуск SA-MP

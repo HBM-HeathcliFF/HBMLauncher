@@ -19,6 +19,7 @@ namespace HBMLauncher
         }
         private async void Form1_Load(object sender, EventArgs e)
         {
+            MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
             Directory.CreateDirectory($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher");
             try
             {

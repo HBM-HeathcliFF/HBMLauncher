@@ -19,6 +19,7 @@ namespace HBMLauncher
 
         private void Show_Load(object sender, EventArgs e)
         {
+            MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
             using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\HBMLauncher\saves"))
             {
                 count = (int)key.GetValue("count");

@@ -126,13 +126,13 @@
     <Content Include="Resources\Folder.png" />
     <None Include="Resources\Max.png" />
     <None Include="Resources\logo.png" />
+    <Content Include="Resources\HBMLRunFile.exe" />
     <Content Include="Resources\header.png" />
     <Content Include="Resources\Menu.png" />
     <None Include="Resources\Normal.png" />
     <None Include="Resources\Min.png" />
     <None Include="Resources\Save.png" />
     <Content Include="Resources\Show.png" />
-    <None Include="Resources\HBMLRunFile.exe" />
     <None Include="Resources\zlib1.dll" />
     <None Include="Resources\img.exe" />
   </ItemGroup>
