@@ -28,6 +28,10 @@ namespace HBMLauncher
             csoundsCB.Items.Add("Вкл");
             if (Program.saves[Program.Data.numberSelection].GetCsounds() == 1) csoundsCB.SelectedIndex = 1;
             else csoundsCB.SelectedIndex = 0;
+            radarCB.Items.Add("Нет");
+            radarCB.Items.Add("Да");
+            if (Program.saves[Program.Data.numberSelection].GetRadar() == 1) radarCB.SelectedIndex = 1;
+            else radarCB.SelectedIndex = 0;
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -48,6 +52,8 @@ namespace HBMLauncher
             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("cleop", cleopCB.SelectedIndex);
             Program.saves[Program.Data.numberSelection].SetCsounds(csoundsCB.SelectedIndex);
             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("csounds", csoundsCB.SelectedIndex);
+            Program.saves[Program.Data.numberSelection].SetRadar(radarCB.SelectedIndex);
+            Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("radar", radarCB.SelectedIndex);
 
             Close();
         }

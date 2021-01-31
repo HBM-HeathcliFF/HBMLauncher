@@ -47,6 +47,7 @@
             this.NormalBtn = new System.Windows.Forms.PictureBox();
             this.CloseBtn = new System.Windows.Forms.PictureBox();
             this.MenuBtn = new System.Windows.Forms.PictureBox();
+            this.radaCB = new System.Windows.Forms.CheckBox();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,7 +68,7 @@
             this.cleop.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cleop.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cleop.ForeColor = System.Drawing.Color.Black;
-            this.cleop.Location = new System.Drawing.Point(3, 97);
+            this.cleop.Location = new System.Drawing.Point(4, 97);
             this.cleop.Name = "cleop";
             this.cleop.Size = new System.Drawing.Size(143, 20);
             this.cleop.TabIndex = 0;
@@ -221,6 +222,7 @@
             // panelContent
             // 
             this.panelContent.BackColor = System.Drawing.Color.Transparent;
+            this.panelContent.Controls.Add(this.radaCB);
             this.panelContent.Controls.Add(this.csoundsCB);
             this.panelContent.Controls.Add(this.cleop);
             this.panelContent.Controls.Add(this.position);
@@ -304,6 +306,21 @@
             this.MenuBtn.TabStop = false;
             this.MenuBtn.Click += new System.EventHandler(this.MenuBtn_Click);
             // 
+            // radaCB
+            // 
+            this.radaCB.AutoSize = true;
+            this.radaCB.BackColor = System.Drawing.Color.Transparent;
+            this.radaCB.Checked = true;
+            this.radaCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.radaCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radaCB.ForeColor = System.Drawing.Color.Black;
+            this.radaCB.Location = new System.Drawing.Point(4, 115);
+            this.radaCB.Name = "radaCB";
+            this.radaCB.Size = new System.Drawing.Size(168, 20);
+            this.radaCB.TabIndex = 13;
+            this.radaCB.Text = "Стандартный радар";
+            this.radaCB.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -357,6 +374,7 @@
         private System.Windows.Forms.PictureBox MaxBtn;
         private System.Windows.Forms.PictureBox logoBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox radaCB;
     }
 }
 

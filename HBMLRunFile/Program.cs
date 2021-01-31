@@ -14,7 +14,7 @@ namespace HBMLRunFile
         static void Main()
         {
             string gtaPath, ip, nickname;
-            int save = 0, cleop, csounds;
+            int save = 0, cleop, csounds, radar;
 
             //Поиск сейва
             int countSaves = 0;
@@ -39,6 +39,7 @@ namespace HBMLRunFile
                 gtaPath = (string)key.GetValue("path");
                 cleop = Convert.ToInt32(key.GetValue("cleop"));
                 csounds = Convert.ToInt32(key.GetValue("csounds"));
+                radar = Convert.ToInt32(key.GetValue("radar"));
                 ip = (string)key.GetValue("ip");
                 nickname = (string)key.GetValue("nickname");
             }
@@ -146,6 +147,24 @@ namespace HBMLRunFile
                     {
                         if (isRun) throw new Exception();
                         else File.WriteAllBytes($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo", Resources.SightDistance_by_0x688);
+                    }
+                }
+
+                //Радар
+                if (radar == 0)
+                {
+                    if (File.Exists($@"{gtaPath}\InterfaceEditor.asi.bak"))
+                    {
+                        if (isRun) throw new Exception();
+                        else File.Move($@"{gtaPath}\InterfaceEditor.asi.bak", $@"{gtaPath}\InterfaceEditor.asi");
+                    }
+                }
+                else if (radar == 1)
+                {
+                    if (File.Exists($@"{gtaPath}\InterfaceEditor.asi"))
+                    {
+                        if (isRun) throw new Exception();
+                        else File.Move($@"{gtaPath}\InterfaceEditor.asi", $@"{gtaPath}\InterfaceEditor.asi.bak");
                     }
                 }
 

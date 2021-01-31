@@ -42,11 +42,13 @@
             this.csoundsCB = new System.Windows.Forms.ComboBox();
             this.cleopCB = new System.Windows.Forms.ComboBox();
             this.folderBtn = new System.Windows.Forms.Button();
+            this.radarL = new System.Windows.Forms.Label();
+            this.radarCB = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(238, 145);
+            this.cancelBtn.Location = new System.Drawing.Point(238, 167);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 23);
             this.cancelBtn.TabIndex = 0;
@@ -56,7 +58,7 @@
             // 
             // confirmBtn
             // 
-            this.confirmBtn.Location = new System.Drawing.Point(319, 145);
+            this.confirmBtn.Location = new System.Drawing.Point(319, 167);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(75, 23);
             this.confirmBtn.TabIndex = 1;
@@ -131,6 +133,7 @@
             this.tbnickname.Name = "tbnickname";
             this.tbnickname.Size = new System.Drawing.Size(144, 20);
             this.tbnickname.TabIndex = 11;
+            this.tbnickname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // csoundsCB
             // 
@@ -159,11 +162,30 @@
             this.folderBtn.UseVisualStyleBackColor = true;
             this.folderBtn.Click += new System.EventHandler(this.FolderBtn_Click);
             // 
+            // radarL
+            // 
+            this.radarL.AutoSize = true;
+            this.radarL.Location = new System.Drawing.Point(7, 143);
+            this.radarL.Name = "radarL";
+            this.radarL.Size = new System.Drawing.Size(110, 13);
+            this.radarL.TabIndex = 16;
+            this.radarL.Text = "Стандартный радар:";
+            // 
+            // radarCB
+            // 
+            this.radarCB.FormattingEnabled = true;
+            this.radarCB.Location = new System.Drawing.Point(116, 140);
+            this.radarCB.Name = "radarCB";
+            this.radarCB.Size = new System.Drawing.Size(44, 21);
+            this.radarCB.TabIndex = 17;
+            // 
             // Edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 172);
+            this.ClientSize = new System.Drawing.Size(401, 197);
+            this.Controls.Add(this.radarCB);
+            this.Controls.Add(this.radarL);
             this.Controls.Add(this.cleopCB);
             this.Controls.Add(this.csoundsCB);
             this.Controls.Add(this.tbnickname);
@@ -179,8 +201,8 @@
             this.Controls.Add(this.cancelBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(417, 210);
-            this.MinimumSize = new System.Drawing.Size(417, 210);
+            this.MaximumSize = new System.Drawing.Size(417, 235);
+            this.MinimumSize = new System.Drawing.Size(417, 235);
             this.Name = "Edit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение сохранения";
@@ -205,5 +227,7 @@
         private System.Windows.Forms.TextBox tbnickname;
         private System.Windows.Forms.ComboBox csoundsCB;
         private System.Windows.Forms.ComboBox cleopCB;
+        private System.Windows.Forms.Label radarL;
+        private System.Windows.Forms.ComboBox radarCB;
     }
 }

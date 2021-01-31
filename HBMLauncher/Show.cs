@@ -32,6 +32,7 @@ namespace HBMLauncher
                     Program.saves.Add(new Saves(CutName(key.GetValue("filepath").ToString()),
                                       (int)key.GetValue("cleop"),
                                       (int)key.GetValue("csounds"),
+                                      (int)key.GetValue("radar"),
                                       key.GetValue("ip").ToString(),
                                       key.GetValue("nickname").ToString(),
                                       key.GetValue("path").ToString()));
@@ -113,6 +114,9 @@ namespace HBMLauncher
             if (Program.saves[listBox1.SelectedIndex].GetCsounds() == 1)
                 info.Text += "CustomSounds: Вкл \n";
             else info.Text += "CustomSounds: Выкл \n";
+            if (Program.saves[listBox1.SelectedIndex].GetRadar() == 1)
+                info.Text += "Стандартный радар: Да \n";
+            else info.Text += "Стандартный радар: Нет \n";
         }
 
         private void RemoveBtn_MouseEnter(object sender, EventArgs e)

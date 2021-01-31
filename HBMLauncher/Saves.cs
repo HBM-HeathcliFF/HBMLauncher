@@ -5,15 +5,17 @@
         private string name;
         private int cleop;
         private int csounds;
+        private int radar;
         private string ip;
         private string nickname;
         private string gtaPath;
 
-        public Saves(string name, int cleop, int csounds, string ip, string nickname, string gtaPath)
+        public Saves(string name, int cleop, int csounds, int radar, string ip, string nickname, string gtaPath)
         {
             this.name = name;
             this.cleop = cleop;
             this.csounds = csounds;
+            this.radar = radar;
             this.ip = ip;
             this.nickname = nickname;
             this.gtaPath = gtaPath;
@@ -32,6 +34,11 @@
         public int GetCsounds()
         {
             return this.csounds;
+        }
+
+        public int GetRadar()
+        {
+            return this.radar;
         }
 
         public string GetIp()
@@ -57,6 +64,11 @@
         public void SetCsounds(int csounds)
         {
             this.csounds = csounds;
+        }
+
+        public void SetRadar(int radar)
+        {
+            this.radar = radar;
         }
 
         public void SetIp(string ip)

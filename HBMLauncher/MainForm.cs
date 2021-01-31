@@ -80,6 +80,28 @@ namespace HBMLauncher
                 File.Delete($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{file.Name}");
                 File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{file.Name}", Resources.HBMLRunFile);
             }
+
+            int saves = 0;
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\HBMLauncher\saves"))
+            {
+                saves = (int)key.GetValue("count");
+            }
+            for (int i = 0; i < saves; i++)
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\saves\save{i + 1}"))
+                {
+                    if ((int)key.GetValue("cleop", -1) == -1)
+                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("cleop", "0");
+                    if ((int)key.GetValue("csounds", -1) == -1)
+                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("csounds", "0");
+                    if ((int)key.GetValue("radar", -1) == -1)
+                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("radar", "0");
+                    if (key.GetValue("ip", "-1").ToString() == "-1")
+                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("ip", "");
+                    if (key.GetValue("nickname", "-1").ToString() == "-1")
+                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("nickname", "");
+                }
+            }
         }
         private void EditBtn_Click(object sender, EventArgs e)
         {
