@@ -12,7 +12,7 @@ namespace HBMLauncher
     public partial class MainForm : Form
     {
         string gtaPath;
-        int count, cleopr, csounds;
+        int count, cleopr, csounds, radar;
         public MainForm()
         {
             InitializeComponent();
@@ -91,11 +91,11 @@ namespace HBMLauncher
                 using (RegistryKey key = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\saves\save{i + 1}"))
                 {
                     if ((int)key.GetValue("cleop", -1) == -1)
-                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("cleop", "0");
+                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("cleop", 0);
                     if ((int)key.GetValue("csounds", -1) == -1)
-                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("csounds", "0");
+                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("csounds", 0);
                     if ((int)key.GetValue("radar", -1) == -1)
-                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("radar", "0");
+                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("radar", 0);
                     if (key.GetValue("ip", "-1").ToString() == "-1")
                         Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("ip", "");
                     if (key.GetValue("nickname", "-1").ToString() == "-1")
@@ -133,12 +133,15 @@ namespace HBMLauncher
                 else cleopr = 0;
                 if (csoundsCB.Checked) csounds = 1;
                 else csounds = 0;
+                if (radarCB.Checked) radar = 1;
+                else radar = 0;
                 string pn = "";
                 string name = CutName(saveFileDialog1.FileName, ref pn);
                 Registry.CurrentUser.CreateSubKey(@"Software\HBMLauncher\saves").SetValue("count", count);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("path", gtaPath);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("cleop", cleopr);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("csounds", csounds);
+                Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("radar", radar);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("filepath", $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{name}.exe");
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("ip", "");
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("nickname", "");

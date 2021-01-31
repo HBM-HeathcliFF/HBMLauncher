@@ -41,13 +41,13 @@
             this.SaveBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
             this.panelContent = new System.Windows.Forms.Panel();
+            this.radarCB = new System.Windows.Forms.CheckBox();
             this.MenuHorizontal = new System.Windows.Forms.Panel();
             this.MaxBtn = new System.Windows.Forms.PictureBox();
             this.MinBtn = new System.Windows.Forms.PictureBox();
             this.NormalBtn = new System.Windows.Forms.PictureBox();
             this.CloseBtn = new System.Windows.Forms.PictureBox();
             this.MenuBtn = new System.Windows.Forms.PictureBox();
-            this.radaCB = new System.Windows.Forms.CheckBox();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -222,7 +222,7 @@
             // panelContent
             // 
             this.panelContent.BackColor = System.Drawing.Color.Transparent;
-            this.panelContent.Controls.Add(this.radaCB);
+            this.panelContent.Controls.Add(this.radarCB);
             this.panelContent.Controls.Add(this.csoundsCB);
             this.panelContent.Controls.Add(this.cleop);
             this.panelContent.Controls.Add(this.position);
@@ -231,6 +231,21 @@
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(485, 270);
             this.panelContent.TabIndex = 15;
+            // 
+            // radarCB
+            // 
+            this.radarCB.AutoSize = true;
+            this.radarCB.BackColor = System.Drawing.Color.Transparent;
+            this.radarCB.Checked = true;
+            this.radarCB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.radarCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radarCB.ForeColor = System.Drawing.Color.Black;
+            this.radarCB.Location = new System.Drawing.Point(4, 115);
+            this.radarCB.Name = "radarCB";
+            this.radarCB.Size = new System.Drawing.Size(168, 20);
+            this.radarCB.TabIndex = 13;
+            this.radarCB.Text = "Стандартный радар";
+            this.radarCB.UseVisualStyleBackColor = false;
             // 
             // MenuHorizontal
             // 
@@ -306,21 +321,6 @@
             this.MenuBtn.TabStop = false;
             this.MenuBtn.Click += new System.EventHandler(this.MenuBtn_Click);
             // 
-            // radaCB
-            // 
-            this.radaCB.AutoSize = true;
-            this.radaCB.BackColor = System.Drawing.Color.Transparent;
-            this.radaCB.Checked = true;
-            this.radaCB.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.radaCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radaCB.ForeColor = System.Drawing.Color.Black;
-            this.radaCB.Location = new System.Drawing.Point(4, 115);
-            this.radaCB.Name = "radaCB";
-            this.radaCB.Size = new System.Drawing.Size(168, 20);
-            this.radaCB.TabIndex = 13;
-            this.radaCB.Text = "Стандартный радар";
-            this.radaCB.UseVisualStyleBackColor = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -374,7 +374,7 @@
         private System.Windows.Forms.PictureBox MaxBtn;
         private System.Windows.Forms.PictureBox logoBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.CheckBox radaCB;
+        private System.Windows.Forms.CheckBox radarCB;
     }
 }
 
