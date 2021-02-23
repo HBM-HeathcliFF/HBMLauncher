@@ -44,11 +44,15 @@
             this.folderBtn = new System.Windows.Forms.Button();
             this.radarL = new System.Windows.Forms.Label();
             this.radarCB = new System.Windows.Forms.ComboBox();
+            this.macrosPathL = new System.Windows.Forms.Label();
+            this.binderPathL = new System.Windows.Forms.Label();
+            this.macrosBtn = new System.Windows.Forms.Button();
+            this.binderBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(238, 167);
+            this.cancelBtn.Location = new System.Drawing.Point(238, 214);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 23);
             this.cancelBtn.TabIndex = 0;
@@ -58,7 +62,7 @@
             // 
             // confirmBtn
             // 
-            this.confirmBtn.Location = new System.Drawing.Point(319, 167);
+            this.confirmBtn.Location = new System.Drawing.Point(319, 214);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(75, 23);
             this.confirmBtn.TabIndex = 1;
@@ -179,11 +183,55 @@
             this.radarCB.Size = new System.Drawing.Size(44, 21);
             this.radarCB.TabIndex = 17;
             // 
+            // macrosPathL
+            // 
+            this.macrosPathL.AutoSize = true;
+            this.macrosPathL.Location = new System.Drawing.Point(7, 189);
+            this.macrosPathL.Name = "macrosPathL";
+            this.macrosPathL.Size = new System.Drawing.Size(92, 13);
+            this.macrosPathL.TabIndex = 20;
+            this.macrosPathL.Text = "Путь к макросу: ";
+            // 
+            // binderPathL
+            // 
+            this.binderPathL.AutoSize = true;
+            this.binderPathL.Location = new System.Drawing.Point(7, 166);
+            this.binderPathL.Name = "binderPathL";
+            this.binderPathL.Size = new System.Drawing.Size(90, 13);
+            this.binderPathL.TabIndex = 18;
+            this.binderPathL.Text = "Путь к биндеру: ";
+            // 
+            // macrosBtn
+            // 
+            this.macrosBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Folder;
+            this.macrosBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.macrosBtn.Location = new System.Drawing.Point(97, 184);
+            this.macrosBtn.Name = "macrosBtn";
+            this.macrosBtn.Size = new System.Drawing.Size(26, 23);
+            this.macrosBtn.TabIndex = 21;
+            this.macrosBtn.UseVisualStyleBackColor = true;
+            this.macrosBtn.Click += new System.EventHandler(this.MacrosBtn_Click);
+            // 
+            // binderBtn
+            // 
+            this.binderBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Folder;
+            this.binderBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.binderBtn.Location = new System.Drawing.Point(96, 161);
+            this.binderBtn.Name = "binderBtn";
+            this.binderBtn.Size = new System.Drawing.Size(26, 23);
+            this.binderBtn.TabIndex = 22;
+            this.binderBtn.UseVisualStyleBackColor = true;
+            this.binderBtn.Click += new System.EventHandler(this.BinderBtn_Click);
+            // 
             // Edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 197);
+            this.ClientSize = new System.Drawing.Size(401, 243);
+            this.Controls.Add(this.binderBtn);
+            this.Controls.Add(this.macrosBtn);
+            this.Controls.Add(this.macrosPathL);
+            this.Controls.Add(this.binderPathL);
             this.Controls.Add(this.radarCB);
             this.Controls.Add(this.radarL);
             this.Controls.Add(this.cleopCB);
@@ -201,8 +249,8 @@
             this.Controls.Add(this.cancelBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(417, 235);
-            this.MinimumSize = new System.Drawing.Size(417, 235);
+            this.MaximumSize = new System.Drawing.Size(417, 281);
+            this.MinimumSize = new System.Drawing.Size(417, 281);
             this.Name = "Edit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение сохранения";
@@ -229,5 +277,9 @@
         private System.Windows.Forms.ComboBox cleopCB;
         private System.Windows.Forms.Label radarL;
         private System.Windows.Forms.ComboBox radarCB;
+        private System.Windows.Forms.Label macrosPathL;
+        private System.Windows.Forms.Label binderPathL;
+        private System.Windows.Forms.Button macrosBtn;
+        private System.Windows.Forms.Button binderBtn;
     }
 }

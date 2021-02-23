@@ -32,6 +32,10 @@ namespace HBMLauncher
             radarCB.Items.Add("Да");
             if (Program.saves[Program.Data.numberSelection].GetRadar() == 1) radarCB.SelectedIndex = 1;
             else radarCB.SelectedIndex = 0;
+            binderPathL.Text += $"{Program.saves[Program.Data.numberSelection].GetBinderPath()}";
+            binderBtn.Location = new Point(binderPathL.Location.X + binderPathL.Size.Width + 3, binderBtn.Location.Y);
+            macrosPathL.Text += $"{Program.saves[Program.Data.numberSelection].GetMacrosPath()}";
+            macrosBtn.Location = new Point(macrosPathL.Location.X + macrosPathL.Size.Width + 3, macrosBtn.Location.Y);
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -41,9 +45,8 @@ namespace HBMLauncher
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
         {
-            string str = gtaPathL.Text.Remove(0, 12);
-            Program.saves[Program.Data.numberSelection].SetGtaPath(str);
-            Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("path", str);
+            Program.saves[Program.Data.numberSelection].SetGtaPath(gtaPathL.Text.Remove(0, 12));
+            Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("path", gtaPathL.Text.Remove(0, 12));
             Program.saves[Program.Data.numberSelection].SetIp(tbip.Text);
             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("ip", tbip.Text);
             Program.saves[Program.Data.numberSelection].SetNickname(tbnickname.Text);
@@ -54,6 +57,10 @@ namespace HBMLauncher
             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("csounds", csoundsCB.SelectedIndex);
             Program.saves[Program.Data.numberSelection].SetRadar(radarCB.SelectedIndex);
             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("radar", radarCB.SelectedIndex);
+            Program.saves[Program.Data.numberSelection].SetBinderPath(binderPathL.Text.Remove(0, 16));
+            Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("binder", binderPathL.Text.Remove(0, 16));
+            Program.saves[Program.Data.numberSelection].SetMacrosPath(macrosPathL.Text.Remove(0, 16));
+            Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("macros", macrosPathL.Text.Remove(0, 16));
 
             Close();
         }
@@ -78,6 +85,34 @@ namespace HBMLauncher
                     catch (UnauthorizedAccessException) { }
                     catch (Exception) { }
                 }
+            }
+        }
+        private void BinderBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Title = "Укажите путь к биндеру",
+                InitialDirectory = @"C:\"
+            };
+            ofd.Filter = "Executable files (*.exe)|*.exe";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                binderPathL.Text = $"Путь к биндеру: {ofd.FileName}";
+                binderBtn.Location = new Point(binderPathL.Location.X + binderPathL.Size.Width + 3, binderBtn.Location.Y);
+            }
+        }
+        private void MacrosBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                Title = "Укажите путь к макросу",
+                InitialDirectory = @"C:\"
+            };
+            ofd.Filter = "Executable files (*.exe)|*.exe";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                macrosPathL.Text = $"Путь к макросу: {ofd.FileName}";
+                macrosBtn.Location = new Point(macrosPathL.Location.X + macrosPathL.Size.Width + 3, macrosBtn.Location.Y);
             }
         }
     }

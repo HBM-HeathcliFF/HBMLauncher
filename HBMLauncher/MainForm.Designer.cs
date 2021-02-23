@@ -41,6 +41,8 @@
             this.SaveBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
             this.panelContent = new System.Windows.Forms.Panel();
+            this.binderCB = new System.Windows.Forms.CheckBox();
+            this.macrosCB = new System.Windows.Forms.CheckBox();
             this.radarCB = new System.Windows.Forms.CheckBox();
             this.MenuHorizontal = new System.Windows.Forms.Panel();
             this.MaxBtn = new System.Windows.Forms.PictureBox();
@@ -64,8 +66,6 @@
             // 
             this.cleop.AutoSize = true;
             this.cleop.BackColor = System.Drawing.Color.Transparent;
-            this.cleop.Checked = true;
-            this.cleop.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cleop.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cleop.ForeColor = System.Drawing.Color.Black;
             this.cleop.Location = new System.Drawing.Point(4, 97);
@@ -98,8 +98,6 @@
             // 
             this.csoundsCB.AutoSize = true;
             this.csoundsCB.BackColor = System.Drawing.Color.Transparent;
-            this.csoundsCB.Checked = true;
-            this.csoundsCB.CheckState = System.Windows.Forms.CheckState.Checked;
             this.csoundsCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.csoundsCB.ForeColor = System.Drawing.Color.Black;
             this.csoundsCB.Location = new System.Drawing.Point(4, 79);
@@ -222,6 +220,8 @@
             // panelContent
             // 
             this.panelContent.BackColor = System.Drawing.Color.Transparent;
+            this.panelContent.Controls.Add(this.binderCB);
+            this.panelContent.Controls.Add(this.macrosCB);
             this.panelContent.Controls.Add(this.radarCB);
             this.panelContent.Controls.Add(this.csoundsCB);
             this.panelContent.Controls.Add(this.cleop);
@@ -232,12 +232,38 @@
             this.panelContent.Size = new System.Drawing.Size(485, 270);
             this.panelContent.TabIndex = 15;
             // 
+            // binderCB
+            // 
+            this.binderCB.AutoSize = true;
+            this.binderCB.BackColor = System.Drawing.Color.Transparent;
+            this.binderCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.binderCB.ForeColor = System.Drawing.Color.Black;
+            this.binderCB.Location = new System.Drawing.Point(4, 133);
+            this.binderCB.Name = "binderCB";
+            this.binderCB.Size = new System.Drawing.Size(95, 20);
+            this.binderCB.TabIndex = 15;
+            this.binderCB.Text = "Aci Binder";
+            this.binderCB.UseVisualStyleBackColor = false;
+            this.binderCB.CheckedChanged += new System.EventHandler(this.BinderCB_CheckedChanged);
+            // 
+            // macrosCB
+            // 
+            this.macrosCB.AutoSize = true;
+            this.macrosCB.BackColor = System.Drawing.Color.Transparent;
+            this.macrosCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.macrosCB.ForeColor = System.Drawing.Color.Black;
+            this.macrosCB.Location = new System.Drawing.Point(4, 151);
+            this.macrosCB.Name = "macrosCB";
+            this.macrosCB.Size = new System.Drawing.Size(108, 20);
+            this.macrosCB.TabIndex = 14;
+            this.macrosCB.Text = "HBM Macros";
+            this.macrosCB.UseVisualStyleBackColor = false;
+            this.macrosCB.CheckedChanged += new System.EventHandler(this.MacrosCB_CheckedChanged);
+            // 
             // radarCB
             // 
             this.radarCB.AutoSize = true;
             this.radarCB.BackColor = System.Drawing.Color.Transparent;
-            this.radarCB.Checked = true;
-            this.radarCB.CheckState = System.Windows.Forms.CheckState.Checked;
             this.radarCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.radarCB.ForeColor = System.Drawing.Color.Black;
             this.radarCB.Location = new System.Drawing.Point(4, 115);
@@ -375,6 +401,8 @@
         private System.Windows.Forms.PictureBox logoBtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox radarCB;
+        private System.Windows.Forms.CheckBox binderCB;
+        private System.Windows.Forms.CheckBox macrosCB;
     }
 }
 

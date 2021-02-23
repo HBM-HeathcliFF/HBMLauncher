@@ -33,6 +33,8 @@ namespace HBMLauncher
                                       (int)key.GetValue("cleop"),
                                       (int)key.GetValue("csounds"),
                                       (int)key.GetValue("radar"),
+                                      key.GetValue("binder").ToString(),
+                                      key.GetValue("macros").ToString(),
                                       key.GetValue("ip").ToString(),
                                       key.GetValue("nickname").ToString(),
                                       key.GetValue("path").ToString()));
@@ -117,6 +119,10 @@ namespace HBMLauncher
             if (Program.saves[listBox1.SelectedIndex].GetRadar() == 1)
                 info.Text += "Стандартный радар: Да \n";
             else info.Text += "Стандартный радар: Нет \n";
+            if (Program.saves[listBox1.SelectedIndex].GetBinderPath() != "")
+                info.Text += $"Путь к биндеру: {Program.saves[listBox1.SelectedIndex].GetBinderPath()}\n";
+            if (Program.saves[listBox1.SelectedIndex].GetMacrosPath() != "")
+                info.Text += $"Путь к макросу: {Program.saves[listBox1.SelectedIndex].GetMacrosPath()}";
         }
 
         private void RemoveBtn_MouseEnter(object sender, EventArgs e)

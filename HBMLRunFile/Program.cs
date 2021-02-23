@@ -13,7 +13,7 @@ namespace HBMLRunFile
         [STAThread]
         static void Main()
         {
-            string gtaPath, ip, nickname;
+            string gtaPath, ip, nickname, binderPath, macrosPath;
             int save = 0, cleop, csounds, radar;
 
             //Поиск сейва
@@ -40,6 +40,8 @@ namespace HBMLRunFile
                 cleop = Convert.ToInt32(key.GetValue("cleop"));
                 csounds = Convert.ToInt32(key.GetValue("csounds"));
                 radar = Convert.ToInt32(key.GetValue("radar"));
+                binderPath = (string)key.GetValue("binder");
+                macrosPath = (string)key.GetValue("macros");
                 ip = (string)key.GetValue("ip");
                 nickname = (string)key.GetValue("nickname");
             }
@@ -111,6 +113,14 @@ namespace HBMLRunFile
                     }
                     File.WriteAllLines($@"{APPath}\audiopacks\default_pack\default_pack.ini", def_vals);
                 }
+
+                //Запуск Binder'а
+                if (binderPath != "")
+                    Process.Start(binderPath);
+
+                //Запуск Macros'а
+                if (macrosPath != "")
+                    Process.Start(macrosPath);
 
                 //Cleo-прорисовка (вызов исключений)
                 bool isRun = false;

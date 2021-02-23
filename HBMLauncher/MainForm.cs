@@ -11,7 +11,7 @@ namespace HBMLauncher
 {
     public partial class MainForm : Form
     {
-        string gtaPath;
+        string gtaPath, binderPath = "", macrosPath = "";
         int count, cleopr, csounds, radar;
         public MainForm()
         {
@@ -46,6 +46,35 @@ namespace HBMLauncher
                 if (!File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\zlib1.dll"))
                     File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\zlib1.dll", Resources.zlib1);
             });
+        }
+
+        private void BinderCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (binderCB.Checked == true)
+            {
+                OpenFileDialog ofd = new OpenFileDialog
+                {
+                    Title = "Укажите путь к биндеру",
+                    InitialDirectory = @"C:\"
+                };
+                ofd.Filter = "Executable files (*.exe)|*.exe";
+                if (ofd.ShowDialog() == DialogResult.OK) binderPath = ofd.FileName;
+                else binderCB.Checked = false;
+            }
+        }
+        private void MacrosCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (macrosCB.Checked == true)
+            {
+                OpenFileDialog ofd = new OpenFileDialog
+                {
+                    Title = "Укажите путь к макросу",
+                    InitialDirectory = @"C:\"
+                };
+                ofd.Filter = "Executable files (*.exe)|*.exe";
+                if (ofd.ShowDialog() == DialogResult.OK) macrosPath = ofd.FileName;
+                else macrosCB.Checked = false;
+            }
         }
 
         #region Menu
@@ -96,6 +125,10 @@ namespace HBMLauncher
                         Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("csounds", 0);
                     if ((int)key.GetValue("radar", -1) == -1)
                         Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("radar", 0);
+                    if (key.GetValue("binder", "-1").ToString() == "-1")
+                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("binder", "");
+                    if (key.GetValue("macros", "-1").ToString() == "-1")
+                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("macros", "");
                     if (key.GetValue("ip", "-1").ToString() == "-1")
                         Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("ip", "");
                     if (key.GetValue("nickname", "-1").ToString() == "-1")
@@ -142,6 +175,8 @@ namespace HBMLauncher
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("cleop", cleopr);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("csounds", csounds);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("radar", radar);
+                Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("binder", binderPath);
+                Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("macros", macrosPath);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("filepath", $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{name}.exe");
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("ip", "");
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("nickname", "");
@@ -225,6 +260,7 @@ namespace HBMLauncher
         {
             WindowState = FormWindowState.Minimized;
         }
+
         private void MaxBtn_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Maximized;
