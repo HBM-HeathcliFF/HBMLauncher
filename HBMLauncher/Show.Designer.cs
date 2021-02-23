@@ -74,7 +74,7 @@
             this.info.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.info.Location = new System.Drawing.Point(158, 22);
             this.info.Name = "info";
-            this.info.Size = new System.Drawing.Size(261, 257);
+            this.info.Size = new System.Drawing.Size(281, 257);
             this.info.TabIndex = 1;
             this.info.Text = "Информация о выбранном сохранении:";
             // 
@@ -108,7 +108,7 @@
             this.menuHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuHorizontal.Location = new System.Drawing.Point(150, 0);
             this.menuHorizontal.Name = "menuHorizontal";
-            this.menuHorizontal.Size = new System.Drawing.Size(330, 23);
+            this.menuHorizontal.Size = new System.Drawing.Size(350, 23);
             this.menuHorizontal.TabIndex = 9;
             this.menuHorizontal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuHorizontal_MouseDown);
             // 
@@ -117,7 +117,7 @@
             this.normalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.normalBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Normal;
             this.normalBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.normalBtn.Location = new System.Drawing.Point(288, 3);
+            this.normalBtn.Location = new System.Drawing.Point(308, 3);
             this.normalBtn.Name = "normalBtn";
             this.normalBtn.Size = new System.Drawing.Size(16, 16);
             this.normalBtn.TabIndex = 8;
@@ -130,7 +130,7 @@
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closeBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Close;
             this.closeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.closeBtn.Location = new System.Drawing.Point(309, 3);
+            this.closeBtn.Location = new System.Drawing.Point(329, 3);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(16, 16);
             this.closeBtn.TabIndex = 5;
@@ -142,7 +142,7 @@
             this.minBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.minBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Min;
             this.minBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.minBtn.Location = new System.Drawing.Point(267, 3);
+            this.minBtn.Location = new System.Drawing.Point(287, 3);
             this.minBtn.Name = "minBtn";
             this.minBtn.Size = new System.Drawing.Size(16, 16);
             this.minBtn.TabIndex = 7;
@@ -154,7 +154,7 @@
             this.maxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.maxBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Max;
             this.maxBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.maxBtn.Location = new System.Drawing.Point(288, 3);
+            this.maxBtn.Location = new System.Drawing.Point(308, 3);
             this.maxBtn.Name = "maxBtn";
             this.maxBtn.Size = new System.Drawing.Size(16, 16);
             this.maxBtn.TabIndex = 6;
@@ -166,7 +166,7 @@
             this.editBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.EditBN;
             this.editBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.editBtn.Enabled = false;
-            this.editBtn.Location = new System.Drawing.Point(425, 94);
+            this.editBtn.Location = new System.Drawing.Point(445, 94);
             this.editBtn.Name = "editBtn";
             this.editBtn.Size = new System.Drawing.Size(50, 29);
             this.editBtn.TabIndex = 11;
@@ -180,7 +180,7 @@
             this.removeBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.DeleteBN;
             this.removeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.removeBtn.Enabled = false;
-            this.removeBtn.Location = new System.Drawing.Point(425, 63);
+            this.removeBtn.Location = new System.Drawing.Point(445, 63);
             this.removeBtn.Name = "removeBtn";
             this.removeBtn.Size = new System.Drawing.Size(50, 29);
             this.removeBtn.TabIndex = 10;
@@ -194,7 +194,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(480, 289);
+            this.ClientSize = new System.Drawing.Size(500, 289);
             this.Controls.Add(this.editBtn);
             this.Controls.Add(this.removeBtn);
             this.Controls.Add(this.menuHorizontal);

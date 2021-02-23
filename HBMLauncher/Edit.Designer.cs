@@ -52,7 +52,7 @@
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(238, 214);
+            this.cancelBtn.Location = new System.Drawing.Point(322, 214);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 23);
             this.cancelBtn.TabIndex = 0;
@@ -62,7 +62,7 @@
             // 
             // confirmBtn
             // 
-            this.confirmBtn.Location = new System.Drawing.Point(319, 214);
+            this.confirmBtn.Location = new System.Drawing.Point(403, 214);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(75, 23);
             this.confirmBtn.TabIndex = 1;
@@ -227,7 +227,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 243);
+            this.ClientSize = new System.Drawing.Size(484, 243);
             this.Controls.Add(this.binderBtn);
             this.Controls.Add(this.macrosBtn);
             this.Controls.Add(this.macrosPathL);
@@ -249,8 +249,8 @@
             this.Controls.Add(this.cancelBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(417, 281);
-            this.MinimumSize = new System.Drawing.Size(417, 281);
+            this.MaximumSize = new System.Drawing.Size(500, 281);
+            this.MinimumSize = new System.Drawing.Size(500, 281);
             this.Name = "Edit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение сохранения";
