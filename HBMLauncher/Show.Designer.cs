@@ -205,6 +205,7 @@
             this.MinimumSize = new System.Drawing.Size(480, 289);
             this.Name = "Show";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "HBM Launcher 2.1";
             this.Load += new System.EventHandler(this.Show_Load);
             this.leftPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();

@@ -148,7 +148,7 @@
             this.MinimumSize = new System.Drawing.Size(209, 147);
             this.Name = "Save";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "HBM Launcher";
+            this.Text = "HBM Launcher 2.1";
             ((System.ComponentModel.ISupportInitialize)(this.header)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
