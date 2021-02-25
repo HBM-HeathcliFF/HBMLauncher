@@ -41,18 +41,21 @@
             this.tbnickname = new System.Windows.Forms.TextBox();
             this.csoundsCB = new System.Windows.Forms.ComboBox();
             this.cleopCB = new System.Windows.Forms.ComboBox();
-            this.folderBtn = new System.Windows.Forms.Button();
             this.radarL = new System.Windows.Forms.Label();
             this.radarCB = new System.Windows.Forms.ComboBox();
             this.macrosPathL = new System.Windows.Forms.Label();
             this.binderPathL = new System.Windows.Forms.Label();
-            this.macrosBtn = new System.Windows.Forms.Button();
+            this.nmacrosBtn = new System.Windows.Forms.Button();
+            this.nbinderBtn = new System.Windows.Forms.Button();
             this.binderBtn = new System.Windows.Forms.Button();
+            this.macrosBtn = new System.Windows.Forms.Button();
+            this.folderBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(322, 214);
+            this.cancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelBtn.Location = new System.Drawing.Point(372, 213);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 23);
             this.cancelBtn.TabIndex = 0;
@@ -62,7 +65,8 @@
             // 
             // confirmBtn
             // 
-            this.confirmBtn.Location = new System.Drawing.Point(403, 214);
+            this.confirmBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.confirmBtn.Location = new System.Drawing.Point(453, 213);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(75, 23);
             this.confirmBtn.TabIndex = 1;
@@ -155,17 +159,6 @@
             this.cleopCB.Size = new System.Drawing.Size(49, 21);
             this.cleopCB.TabIndex = 15;
             // 
-            // folderBtn
-            // 
-            this.folderBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Folder;
-            this.folderBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.folderBtn.Location = new System.Drawing.Point(74, 25);
-            this.folderBtn.Name = "folderBtn";
-            this.folderBtn.Size = new System.Drawing.Size(26, 23);
-            this.folderBtn.TabIndex = 9;
-            this.folderBtn.UseVisualStyleBackColor = true;
-            this.folderBtn.Click += new System.EventHandler(this.FolderBtn_Click);
-            // 
             // radarL
             // 
             this.radarL.AutoSize = true;
@@ -201,16 +194,27 @@
             this.binderPathL.TabIndex = 18;
             this.binderPathL.Text = "Путь к биндеру: ";
             // 
-            // macrosBtn
+            // nmacrosBtn
             // 
-            this.macrosBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Folder;
-            this.macrosBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.macrosBtn.Location = new System.Drawing.Point(97, 184);
-            this.macrosBtn.Name = "macrosBtn";
-            this.macrosBtn.Size = new System.Drawing.Size(26, 23);
-            this.macrosBtn.TabIndex = 21;
-            this.macrosBtn.UseVisualStyleBackColor = true;
-            this.macrosBtn.Click += new System.EventHandler(this.MacrosBtn_Click);
+            this.nmacrosBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.cancel;
+            this.nmacrosBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.nmacrosBtn.Location = new System.Drawing.Point(125, 184);
+            this.nmacrosBtn.Name = "nmacrosBtn";
+            this.nmacrosBtn.Size = new System.Drawing.Size(26, 23);
+            this.nmacrosBtn.TabIndex = 24;
+            this.nmacrosBtn.UseVisualStyleBackColor = true;
+            this.nmacrosBtn.Click += new System.EventHandler(this.NmacrosBtn_Click);
+            // 
+            // nbinderBtn
+            // 
+            this.nbinderBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.cancel;
+            this.nbinderBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.nbinderBtn.Location = new System.Drawing.Point(124, 161);
+            this.nbinderBtn.Name = "nbinderBtn";
+            this.nbinderBtn.Size = new System.Drawing.Size(26, 23);
+            this.nbinderBtn.TabIndex = 23;
+            this.nbinderBtn.UseVisualStyleBackColor = true;
+            this.nbinderBtn.Click += new System.EventHandler(this.NbinderBtn_Click);
             // 
             // binderBtn
             // 
@@ -223,11 +227,35 @@
             this.binderBtn.UseVisualStyleBackColor = true;
             this.binderBtn.Click += new System.EventHandler(this.BinderBtn_Click);
             // 
+            // macrosBtn
+            // 
+            this.macrosBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Folder;
+            this.macrosBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.macrosBtn.Location = new System.Drawing.Point(97, 184);
+            this.macrosBtn.Name = "macrosBtn";
+            this.macrosBtn.Size = new System.Drawing.Size(26, 23);
+            this.macrosBtn.TabIndex = 21;
+            this.macrosBtn.UseVisualStyleBackColor = true;
+            this.macrosBtn.Click += new System.EventHandler(this.MacrosBtn_Click);
+            // 
+            // folderBtn
+            // 
+            this.folderBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Folder;
+            this.folderBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.folderBtn.Location = new System.Drawing.Point(74, 25);
+            this.folderBtn.Name = "folderBtn";
+            this.folderBtn.Size = new System.Drawing.Size(26, 23);
+            this.folderBtn.TabIndex = 9;
+            this.folderBtn.UseVisualStyleBackColor = true;
+            this.folderBtn.Click += new System.EventHandler(this.FolderBtn_Click);
+            // 
             // Edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 243);
+            this.ClientSize = new System.Drawing.Size(534, 242);
+            this.Controls.Add(this.nmacrosBtn);
+            this.Controls.Add(this.nbinderBtn);
             this.Controls.Add(this.binderBtn);
             this.Controls.Add(this.macrosBtn);
             this.Controls.Add(this.macrosPathL);
@@ -248,9 +276,7 @@
             this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.cancelBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(500, 281);
-            this.MinimumSize = new System.Drawing.Size(500, 281);
+            this.MinimumSize = new System.Drawing.Size(380, 280);
             this.Name = "Edit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение сохранения";
@@ -281,5 +307,7 @@
         private System.Windows.Forms.Label binderPathL;
         private System.Windows.Forms.Button macrosBtn;
         private System.Windows.Forms.Button binderBtn;
+        private System.Windows.Forms.Button nbinderBtn;
+        private System.Windows.Forms.Button nmacrosBtn;
     }
 }

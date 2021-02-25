@@ -133,6 +133,7 @@
   <ItemGroup>
     <Content Include="HBML.ico" />
     <None Include="Resources\Close.png" />
+    <None Include="Resources\cancel.png" />
     <Content Include="Resources\Delete.png" />
     <None Include="Resources\DeleteBA.png" />
     <None Include="Resources\DeleteBN.png" />

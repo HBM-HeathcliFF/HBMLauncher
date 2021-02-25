@@ -13,6 +13,12 @@ namespace HBMLauncher
             InitializeComponent();
         }
 
+        private void moveButton(Label label, Button btnF, Button btnC)
+        {
+            btnF.Location = new Point(label.Location.X + label.Size.Width + 3, btnF.Location.Y);
+            btnC.Location = new Point(btnF.Location.X + 28, btnC.Location.Y);
+        }
+
         private void Edit_Load(object sender, EventArgs e)
         {
             nameL.Text += $"{Program.saves[Program.Data.numberSelection].GetName()}";
@@ -33,9 +39,9 @@ namespace HBMLauncher
             if (Program.saves[Program.Data.numberSelection].GetRadar() == 1) radarCB.SelectedIndex = 1;
             else radarCB.SelectedIndex = 0;
             binderPathL.Text += $"{Program.saves[Program.Data.numberSelection].GetBinderPath()}";
-            binderBtn.Location = new Point(binderPathL.Location.X + binderPathL.Size.Width + 3, binderBtn.Location.Y);
+            moveButton(binderPathL, binderBtn, nbinderBtn);
             macrosPathL.Text += $"{Program.saves[Program.Data.numberSelection].GetMacrosPath()}";
-            macrosBtn.Location = new Point(macrosPathL.Location.X + macrosPathL.Size.Width + 3, macrosBtn.Location.Y);
+            moveButton(macrosPathL, macrosBtn, nmacrosBtn);
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -98,7 +104,7 @@ namespace HBMLauncher
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 binderPathL.Text = $"Путь к биндеру: {ofd.FileName}";
-                binderBtn.Location = new Point(binderPathL.Location.X + binderPathL.Size.Width + 3, binderBtn.Location.Y);
+                moveButton(binderPathL, binderBtn, nbinderBtn);
             }
         }
         private void MacrosBtn_Click(object sender, EventArgs e)
@@ -112,8 +118,20 @@ namespace HBMLauncher
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 macrosPathL.Text = $"Путь к макросу: {ofd.FileName}";
-                macrosBtn.Location = new Point(macrosPathL.Location.X + macrosPathL.Size.Width + 3, macrosBtn.Location.Y);
+                moveButton(macrosPathL, macrosBtn, nmacrosBtn);
             }
+        }
+
+        private void NbinderBtn_Click(object sender, EventArgs e)
+        {
+            binderPathL.Text = "Путь к биндеру: ";
+            moveButton(binderPathL, binderBtn, nbinderBtn);
+        }
+
+        private void NmacrosBtn_Click(object sender, EventArgs e)
+        {
+            macrosPathL.Text = "Путь к макросу: ";
+            moveButton(macrosPathL, macrosBtn, nmacrosBtn);
         }
     }
 }
