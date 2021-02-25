@@ -121,7 +121,7 @@ namespace HBMLRunFile
 
                 //Запуск Macros'а
                 isRun = false;
-                if (macrosPath != "" && Process.GetProcessesByName("HBM Macros 2.1.exe").Length < 1)
+                if (macrosPath != "" && Process.GetProcessesByName("HBM Macros 2.0.exe").Length < 1)
                     Process.Start(macrosPath);
 
                 //Cleo-прорисовка (вызов исключений)
