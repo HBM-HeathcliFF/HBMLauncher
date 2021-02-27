@@ -115,17 +115,19 @@ namespace HBMLRunFile
                 }
 
                 //Запуск Binder'а
-                bool isRun = false;
-                if (binderPath != "" && Process.GetProcessesByName("ACiBinder.exe").Length < 1)
+                if (binderPath.Contains("ACiBinder") && binderPath.EndsWith(".exe"))
+                {
                     Process.Start(binderPath);
+                }
 
                 //Запуск Macros'а
-                isRun = false;
-                if (macrosPath != "" && Process.GetProcessesByName("HBM Macros 2.0.exe").Length < 1)
+                if (macrosPath.Contains("HBM Macros") && macrosPath.EndsWith(".exe"))
+                {
                     Process.Start(macrosPath);
+                }
 
                 //Cleo-прорисовка (вызов исключений)
-                isRun = false;
+                bool isRun = false;
                 foreach (var process in Process.GetProcessesByName("gta_sa.exe"))
                 {
                     if (gtaPath == process.StartInfo.FileName &&
