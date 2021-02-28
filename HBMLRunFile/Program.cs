@@ -116,19 +116,29 @@ namespace HBMLRunFile
 
                 //Запуск Binder'а
                 if (binderPath.Contains("ACiBinder") && binderPath.EndsWith(".exe"))
-                {
                     Process.Start(binderPath);
+                else
+                {
+                    foreach (var process in Process.GetProcessesByName("AciBinder"))
+                    {
+                        if (binderPath == process.StartInfo.FileName) process.Kill();
+                    }
                 }
 
                 //Запуск Macros'а
                 if (macrosPath.Contains("HBM Macros") && macrosPath.EndsWith(".exe"))
-                {
                     Process.Start(macrosPath);
+                else
+                {
+                    foreach (var process in Process.GetProcessesByName("HBM Macros"))
+                    {
+                        if (macrosPath == process.StartInfo.FileName) process.Kill();
+                    }
                 }
 
                 //Cleo-прорисовка (вызов исключений)
                 bool isRun = false;
-                foreach (var process in Process.GetProcessesByName("gta_sa.exe"))
+                foreach (var process in Process.GetProcessesByName("gta_sa"))
                 {
                     if (gtaPath == process.StartInfo.FileName &&
                         File.Exists($@"{gtaPath}\cleo\SightDistance_by_0x688.cleo") &&
