@@ -42,6 +42,10 @@ namespace HBMLauncher
             moveButton(binderPathL, binderBtn, nbinderBtn);
             macrosPathL.Text += $"{Program.saves[Program.Data.numberSelection].GetMacrosPath()}";
             moveButton(macrosPathL, macrosBtn, nmacrosBtn);
+            if (binderPathL.Text == "Путь к биндеру: ")
+                nbinderBtn.Visible = false;
+            if (macrosPathL.Text == "Путь к макросу: ")
+                nmacrosBtn.Visible = false;
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -105,6 +109,7 @@ namespace HBMLauncher
             {
                 binderPathL.Text = $"Путь к биндеру: {ofd.FileName}";
                 moveButton(binderPathL, binderBtn, nbinderBtn);
+                nbinderBtn.Visible = true;
             }
         }
         private void MacrosBtn_Click(object sender, EventArgs e)
@@ -119,6 +124,7 @@ namespace HBMLauncher
             {
                 macrosPathL.Text = $"Путь к макросу: {ofd.FileName}";
                 moveButton(macrosPathL, macrosBtn, nmacrosBtn);
+                nmacrosBtn.Visible = true;
             }
         }
 
@@ -126,12 +132,14 @@ namespace HBMLauncher
         {
             binderPathL.Text = "Путь к биндеру: ";
             moveButton(binderPathL, binderBtn, nbinderBtn);
+            nbinderBtn.Visible = false;
         }
 
         private void NmacrosBtn_Click(object sender, EventArgs e)
         {
             macrosPathL.Text = "Путь к макросу: ";
             moveButton(macrosPathL, macrosBtn, nmacrosBtn);
+            nmacrosBtn.Visible = false;
         }
     }
 }
