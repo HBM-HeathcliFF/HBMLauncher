@@ -13,7 +13,7 @@ namespace HBMLRunFile
         [STAThread]
         static void Main()
         {
-            string gtaPath, ip, nickname, binderPath, macrosPath;
+            string gtaPath, ip, nickname, binderPath, macrosPath, sensfix;
             int save = 0, cleop, csounds, radar;
 
             //Поиск сейва
@@ -42,6 +42,7 @@ namespace HBMLRunFile
                 radar = Convert.ToInt32(key.GetValue("radar"));
                 binderPath = (string)key.GetValue("binder");
                 macrosPath = (string)key.GetValue("macros");
+                sensfix = (string)key.GetValue("sensfix");
                 ip = (string)key.GetValue("ip");
                 nickname = (string)key.GetValue("nickname");
             }
@@ -134,6 +135,18 @@ namespace HBMLRunFile
                     {
                         if (macrosPath == process.StartInfo.FileName) process.Kill();
                     }
+                }
+
+                //Настройка sensfix'а
+                if (sensfix != "")
+                {
+                    string[] temp = sensfix.Split(' ');
+                    string[] sens = new string[4];
+                    sens[0] = " [sensfix]";
+                    sens[1] = $" global={temp[0]}";
+                    sens[2] = $" aiming_sniper={temp[1]}";
+                    sens[3] = $" aiming={temp[2]}";
+                    File.WriteAllLines($@"{gtaPath}\sensfix.ini", sens);
                 }
 
                 //Cleo-прорисовка (вызов исключений)

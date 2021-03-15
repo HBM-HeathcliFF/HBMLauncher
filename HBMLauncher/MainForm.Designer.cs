@@ -41,6 +41,7 @@
             this.SaveBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
             this.panelContent = new System.Windows.Forms.Panel();
+            this.sensfixCB = new System.Windows.Forms.CheckBox();
             this.binderCB = new System.Windows.Forms.CheckBox();
             this.macrosCB = new System.Windows.Forms.CheckBox();
             this.radarCB = new System.Windows.Forms.CheckBox();
@@ -50,6 +51,7 @@
             this.NormalBtn = new System.Windows.Forms.PictureBox();
             this.CloseBtn = new System.Windows.Forms.PictureBox();
             this.MenuBtn = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -220,6 +222,7 @@
             // panelContent
             // 
             this.panelContent.BackColor = System.Drawing.Color.Transparent;
+            this.panelContent.Controls.Add(this.sensfixCB);
             this.panelContent.Controls.Add(this.binderCB);
             this.panelContent.Controls.Add(this.macrosCB);
             this.panelContent.Controls.Add(this.radarCB);
@@ -231,6 +234,20 @@
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(485, 270);
             this.panelContent.TabIndex = 15;
+            // 
+            // sensfixCB
+            // 
+            this.sensfixCB.AutoSize = true;
+            this.sensfixCB.BackColor = System.Drawing.Color.Transparent;
+            this.sensfixCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sensfixCB.ForeColor = System.Drawing.Color.Black;
+            this.sensfixCB.Location = new System.Drawing.Point(4, 169);
+            this.sensfixCB.Name = "sensfixCB";
+            this.sensfixCB.Size = new System.Drawing.Size(223, 20);
+            this.sensfixCB.TabIndex = 16;
+            this.sensfixCB.Text = "Запомнить настройки Sensfix";
+            this.sensfixCB.UseVisualStyleBackColor = false;
+            this.sensfixCB.CheckedChanged += new System.EventHandler(this.SensfixCB_CheckedChanged);
             // 
             // binderCB
             // 
@@ -347,6 +364,14 @@
             this.MenuBtn.TabStop = false;
             this.MenuBtn.Click += new System.EventHandler(this.MenuBtn_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "ini";
+            this.openFileDialog1.FileName = "sensfix.ini";
+            this.openFileDialog1.Filter = "Конфигурационный файл(*.ini)|*.ini";
+            this.openFileDialog1.InitialDirectory = "@\"C:\\\"";
+            this.openFileDialog1.Title = "Укажите путь к sensfix.ini";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,6 +428,8 @@
         private System.Windows.Forms.CheckBox radarCB;
         private System.Windows.Forms.CheckBox binderCB;
         private System.Windows.Forms.CheckBox macrosCB;
+        private System.Windows.Forms.CheckBox sensfixCB;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

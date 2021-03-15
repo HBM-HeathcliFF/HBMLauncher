@@ -35,6 +35,7 @@ namespace HBMLauncher
                                       (int)key.GetValue("radar"),
                                       key.GetValue("binder").ToString(),
                                       key.GetValue("macros").ToString(),
+                                      key.GetValue("sensfix").ToString(),
                                       key.GetValue("ip").ToString(),
                                       key.GetValue("nickname").ToString(),
                                       key.GetValue("path").ToString()));
@@ -123,6 +124,8 @@ namespace HBMLauncher
                 info.Text += $"Путь к биндеру: {Program.saves[listBox1.SelectedIndex].GetBinderPath()}\n";
             if (Program.saves[listBox1.SelectedIndex].GetMacrosPath() != "")
                 info.Text += $"Путь к макросу: {Program.saves[listBox1.SelectedIndex].GetMacrosPath()}";
+            if (Program.saves[listBox1.SelectedIndex].GetSensfix() != "")
+                info.Text += $"Запоминание настроек sensfix: Вкл";
         }
 
         private void RemoveBtn_MouseEnter(object sender, EventArgs e)

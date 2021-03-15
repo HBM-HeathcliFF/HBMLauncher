@@ -8,11 +8,12 @@
         private int radar;
         private string binderPath;
         private string macrosPath;
+        private string sensfix;
         private string ip;
         private string nickname;
         private string gtaPath;
 
-        public Saves(string name, int cleop, int csounds, int radar, string binderPath, string macrosPath, string ip, string nickname, string gtaPath)
+        public Saves(string name, int cleop, int csounds, int radar, string binderPath, string macrosPath, string sensfix, string ip, string nickname, string gtaPath)
         {
             this.name = name;
             this.cleop = cleop;
@@ -20,6 +21,7 @@
             this.radar = radar;
             this.binderPath = binderPath;
             this.macrosPath = macrosPath;
+            this.sensfix = sensfix;
             this.ip = ip;
             this.nickname = nickname;
             this.gtaPath = gtaPath;
@@ -53,6 +55,11 @@
         public string GetMacrosPath()
         {
             return this.macrosPath;
+        }
+
+        public string GetSensfix()
+        {
+            return this.sensfix;
         }
 
         public string GetIp()
@@ -93,6 +100,11 @@
         public void SetMacrosPath(string macrosPath)
         {
             this.macrosPath = macrosPath;
+        }
+
+        public void SetSensfix(string sensfix)
+        {
+            this.sensfix = sensfix;
         }
 
         public void SetIp(string ip)

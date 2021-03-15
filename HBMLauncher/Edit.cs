@@ -8,12 +8,26 @@ namespace HBMLauncher
 {
     public partial class Edit : Form
     {
+        string sensfix = "";
+
         public Edit()
         {
             InitializeComponent();
         }
-
-        private void moveButton(Label label, Button btnF, Button btnC)
+        string CutNameWE(string str)
+        {
+            char[] str1 = str.ToCharArray();
+            for (int i = str1.Length - 1; i > -1; i--)
+            {
+                if (str1[i] == '\\')
+                {
+                    str = str.Remove(0, i + 1);
+                    break;
+                }
+            }
+            return str;
+        }
+        private void MoveButton(Label label, Button btnF, Button btnC)
         {
             btnF.Location = new Point(label.Location.X + label.Size.Width + 3, btnF.Location.Y);
             btnC.Location = new Point(btnF.Location.X + 28, btnC.Location.Y);
@@ -39,13 +53,16 @@ namespace HBMLauncher
             if (Program.saves[Program.Data.numberSelection].GetRadar() == 1) radarCB.SelectedIndex = 1;
             else radarCB.SelectedIndex = 0;
             binderPathL.Text += $"{Program.saves[Program.Data.numberSelection].GetBinderPath()}";
-            moveButton(binderPathL, binderBtn, nbinderBtn);
+            MoveButton(binderPathL, binderBtn, nbinderBtn);
             macrosPathL.Text += $"{Program.saves[Program.Data.numberSelection].GetMacrosPath()}";
-            moveButton(macrosPathL, macrosBtn, nmacrosBtn);
+            MoveButton(macrosPathL, macrosBtn, nmacrosBtn);
             if (binderPathL.Text == "Путь к биндеру: ")
                 nbinderBtn.Visible = false;
             if (macrosPathL.Text == "Путь к макросу: ")
                 nmacrosBtn.Visible = false;
+            sensfix = Program.saves[Program.Data.numberSelection].GetSensfix();
+            if (sensfix == "")
+                nsensfixBtn.Visible = false;
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -71,6 +88,8 @@ namespace HBMLauncher
             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("binder", binderPathL.Text.Remove(0, 16));
             Program.saves[Program.Data.numberSelection].SetMacrosPath(macrosPathL.Text.Remove(0, 16));
             Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("macros", macrosPathL.Text.Remove(0, 16));
+            Program.saves[Program.Data.numberSelection].SetSensfix(sensfix);
+            Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{Program.Data.numberSelection + 1}").SetValue("sensfix", sensfix);
 
             Close();
         }
@@ -108,7 +127,7 @@ namespace HBMLauncher
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 binderPathL.Text = $"Путь к биндеру: {ofd.FileName}";
-                moveButton(binderPathL, binderBtn, nbinderBtn);
+                MoveButton(binderPathL, binderBtn, nbinderBtn);
                 nbinderBtn.Visible = true;
             }
         }
@@ -123,23 +142,45 @@ namespace HBMLauncher
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 macrosPathL.Text = $"Путь к макросу: {ofd.FileName}";
-                moveButton(macrosPathL, macrosBtn, nmacrosBtn);
+                MoveButton(macrosPathL, macrosBtn, nmacrosBtn);
                 nmacrosBtn.Visible = true;
+            }
+        }
+        private void SensfixBtn_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK &&
+                    CutNameWE(openFileDialog1.FileName) == "sensfix.ini")
+            {
+                string[] temp = File.ReadAllLines(openFileDialog1.FileName);
+                for (int i = 1; i < 4; i++)
+                {
+                    sensfix += temp[i].Split('=')[1] + " ";
+                }
+                sensfix.Remove(sensfix.Length - 1);
+                nsensfixBtn.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Указанный файл не sensfix.ini", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void NbinderBtn_Click(object sender, EventArgs e)
         {
             binderPathL.Text = "Путь к биндеру: ";
-            moveButton(binderPathL, binderBtn, nbinderBtn);
+            MoveButton(binderPathL, binderBtn, nbinderBtn);
             nbinderBtn.Visible = false;
         }
-
         private void NmacrosBtn_Click(object sender, EventArgs e)
         {
             macrosPathL.Text = "Путь к макросу: ";
-            moveButton(macrosPathL, macrosBtn, nmacrosBtn);
+            MoveButton(macrosPathL, macrosBtn, nmacrosBtn);
             nmacrosBtn.Visible = false;
+        }
+        private void NsensfixBtn_Click(object sender, EventArgs e)
+        {
+            sensfix = "";
+            nsensfixBtn.Visible = false;
         }
     }
 }

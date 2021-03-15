@@ -11,7 +11,7 @@ namespace HBMLauncher
 {
     public partial class MainForm : Form
     {
-        string gtaPath, binderPath = "", macrosPath = "";
+        string gtaPath, binderPath = "", macrosPath = "", sensfix = "";
         int count, cleopr, csounds, radar;
         public MainForm()
         {
@@ -50,7 +50,7 @@ namespace HBMLauncher
 
         private void BinderCB_CheckedChanged(object sender, EventArgs e)
         {
-            if (binderCB.Checked == true)
+            if (binderCB.Checked)
             {
                 OpenFileDialog ofd = new OpenFileDialog
                 {
@@ -64,7 +64,7 @@ namespace HBMLauncher
         }
         private void MacrosCB_CheckedChanged(object sender, EventArgs e)
         {
-            if (macrosCB.Checked == true)
+            if (macrosCB.Checked)
             {
                 OpenFileDialog ofd = new OpenFileDialog
                 {
@@ -74,6 +74,27 @@ namespace HBMLauncher
                 ofd.Filter = "Executable files (*.exe)|*.exe";
                 if (ofd.ShowDialog() == DialogResult.OK) macrosPath = ofd.FileName;
                 else macrosCB.Checked = false;
+            }
+        }
+        private void SensfixCB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sensfixCB.Checked)
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.OK &&
+                    CutNameWE(openFileDialog1.FileName) == "sensfix.ini")
+                {
+                    string[] temp = File.ReadAllLines(openFileDialog1.FileName);
+                    for (int i = 1; i < 4; i++)
+                    {
+                        sensfix += temp[i].Split('=')[1] + " ";
+                    }
+                    sensfix.Remove(sensfix.Length - 1);
+                }
+                else
+                {
+                    MessageBox.Show("Указанный файл не sensfix.ini", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    sensfixCB.Checked = false;
+                }
             }
         }
 
@@ -88,6 +109,19 @@ namespace HBMLauncher
                     str = str.Remove(i, str.Length - i);
                     pn = str;
                 }
+                if (str1[i] == '\\')
+                {
+                    str = str.Remove(0, i + 1);
+                    break;
+                }
+            }
+            return str;
+        }
+        string CutNameWE(string str)
+        {
+            char[] str1 = str.ToCharArray();
+            for (int i = str1.Length - 1; i > -1; i--)
+            {
                 if (str1[i] == '\\')
                 {
                     str = str.Remove(0, i + 1);
@@ -129,6 +163,8 @@ namespace HBMLauncher
                         Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("binder", "");
                     if (key.GetValue("macros", "-1").ToString() == "-1")
                         Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("macros", "");
+                    if (key.GetValue("sensfix", "-1").ToString() == "-1")
+                        Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("sensfix", "");
                     if (key.GetValue("ip", "-1").ToString() == "-1")
                         Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{i + 1}").SetValue("ip", "");
                     if (key.GetValue("nickname", "-1").ToString() == "-1")
@@ -177,6 +213,7 @@ namespace HBMLauncher
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("radar", radar);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("binder", binderPath);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("macros", macrosPath);
+                Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("sensfix", sensfix);
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("filepath", $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\{name}.exe");
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("ip", "");
                 Registry.CurrentUser.CreateSubKey($@"Software\HBMLauncher\saves\save{count}").SetValue("nickname", "");

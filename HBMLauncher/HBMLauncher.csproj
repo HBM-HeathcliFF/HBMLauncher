@@ -140,6 +140,7 @@
     <Content Include="Resources\Edit.png" />
     <None Include="Resources\EditBA.png" />
     <None Include="Resources\EditBN.png" />
+    <Content Include="Resources\EditB.png" />
     <Content Include="Resources\Folder.png" />
     <None Include="Resources\Max.png" />
     <None Include="Resources\logo.png" />

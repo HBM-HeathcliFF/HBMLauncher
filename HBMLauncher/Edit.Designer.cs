@@ -45,17 +45,21 @@
             this.radarCB = new System.Windows.Forms.ComboBox();
             this.macrosPathL = new System.Windows.Forms.Label();
             this.binderPathL = new System.Windows.Forms.Label();
+            this.sensfixL = new System.Windows.Forms.Label();
+            this.nsensfixBtn = new System.Windows.Forms.Button();
+            this.sensfixBtn = new System.Windows.Forms.Button();
             this.nmacrosBtn = new System.Windows.Forms.Button();
             this.nbinderBtn = new System.Windows.Forms.Button();
             this.binderBtn = new System.Windows.Forms.Button();
             this.macrosBtn = new System.Windows.Forms.Button();
             this.folderBtn = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // cancelBtn
             // 
             this.cancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelBtn.Location = new System.Drawing.Point(372, 213);
+            this.cancelBtn.Location = new System.Drawing.Point(372, 238);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(75, 23);
             this.cancelBtn.TabIndex = 0;
@@ -66,7 +70,7 @@
             // confirmBtn
             // 
             this.confirmBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.confirmBtn.Location = new System.Drawing.Point(453, 213);
+            this.confirmBtn.Location = new System.Drawing.Point(453, 238);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(75, 23);
             this.confirmBtn.TabIndex = 1;
@@ -194,6 +198,37 @@
             this.binderPathL.TabIndex = 18;
             this.binderPathL.Text = "Путь к биндеру: ";
             // 
+            // sensfixL
+            // 
+            this.sensfixL.AutoSize = true;
+            this.sensfixL.Location = new System.Drawing.Point(7, 212);
+            this.sensfixL.Name = "sensfixL";
+            this.sensfixL.Size = new System.Drawing.Size(100, 13);
+            this.sensfixL.TabIndex = 25;
+            this.sensfixL.Text = "Настройки sensfix:";
+            // 
+            // nsensfixBtn
+            // 
+            this.nsensfixBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.cancel;
+            this.nsensfixBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.nsensfixBtn.Location = new System.Drawing.Point(135, 207);
+            this.nsensfixBtn.Name = "nsensfixBtn";
+            this.nsensfixBtn.Size = new System.Drawing.Size(26, 23);
+            this.nsensfixBtn.TabIndex = 27;
+            this.nsensfixBtn.UseVisualStyleBackColor = true;
+            this.nsensfixBtn.Click += new System.EventHandler(this.NsensfixBtn_Click);
+            // 
+            // sensfixBtn
+            // 
+            this.sensfixBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.EditB;
+            this.sensfixBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.sensfixBtn.Location = new System.Drawing.Point(107, 207);
+            this.sensfixBtn.Name = "sensfixBtn";
+            this.sensfixBtn.Size = new System.Drawing.Size(26, 23);
+            this.sensfixBtn.TabIndex = 26;
+            this.sensfixBtn.UseVisualStyleBackColor = true;
+            this.sensfixBtn.Click += new System.EventHandler(this.SensfixBtn_Click);
+            // 
             // nmacrosBtn
             // 
             this.nmacrosBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.cancel;
@@ -249,11 +284,22 @@
             this.folderBtn.UseVisualStyleBackColor = true;
             this.folderBtn.Click += new System.EventHandler(this.FolderBtn_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "ini";
+            this.openFileDialog1.FileName = "sensfix.ini";
+            this.openFileDialog1.Filter = "Конфигурационный файл(*.ini)|*.ini";
+            this.openFileDialog1.InitialDirectory = "@\"C:\\\"";
+            this.openFileDialog1.Title = "Укажите путь к sensfix.ini";
+            // 
             // Edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 242);
+            this.ClientSize = new System.Drawing.Size(534, 267);
+            this.Controls.Add(this.nsensfixBtn);
+            this.Controls.Add(this.sensfixBtn);
+            this.Controls.Add(this.sensfixL);
             this.Controls.Add(this.nmacrosBtn);
             this.Controls.Add(this.nbinderBtn);
             this.Controls.Add(this.binderBtn);
@@ -276,7 +322,7 @@
             this.Controls.Add(this.confirmBtn);
             this.Controls.Add(this.cancelBtn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(380, 280);
+            this.MinimumSize = new System.Drawing.Size(380, 305);
             this.Name = "Edit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение сохранения";
@@ -309,5 +355,9 @@
         private System.Windows.Forms.Button binderBtn;
         private System.Windows.Forms.Button nbinderBtn;
         private System.Windows.Forms.Button nmacrosBtn;
+        private System.Windows.Forms.Label sensfixL;
+        private System.Windows.Forms.Button nsensfixBtn;
+        private System.Windows.Forms.Button sensfixBtn;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
