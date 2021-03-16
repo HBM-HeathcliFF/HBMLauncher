@@ -123,7 +123,7 @@ namespace HBMLauncher
             if (Program.saves[listBox1.SelectedIndex].GetBinderPath() != "")
                 info.Text += $"Путь к биндеру: {Program.saves[listBox1.SelectedIndex].GetBinderPath()}\n";
             if (Program.saves[listBox1.SelectedIndex].GetMacrosPath() != "")
-                info.Text += $"Путь к макросу: {Program.saves[listBox1.SelectedIndex].GetMacrosPath()}";
+                info.Text += $"Путь к макросу: {Program.saves[listBox1.SelectedIndex].GetMacrosPath()}\n";
             if (Program.saves[listBox1.SelectedIndex].GetSensfix() != "")
                 info.Text += $"Запоминание настроек sensfix: Вкл";
         }
