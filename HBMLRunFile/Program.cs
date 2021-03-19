@@ -10,6 +10,12 @@ namespace HBMLRunFile
 {
     static class Program
     {
+        enum Start
+        {
+            GAME,
+            LAUNCHER
+        };
+
         [STAThread]
         static void Main()
         {
@@ -67,18 +73,18 @@ namespace HBMLRunFile
                     {
                         text = streamReader.ReadToEnd().Split('\n');
                     }
-                    bool isConstains = false;
+                    bool isContains = false;
                     for (int i = 0; i < text.Length; i++)
                     {
                         if (text[i].Contains("stream_files_from_internet"))
                         {
                             text[i] = "stream_files_from_internet = 0";
                             File.WriteAllLines($@"{APPath}\audio.ini", text);
-                            isConstains = true;
+                            isContains = true;
                             break;
                         }
                     }
-                    if (!isConstains)
+                    if (!isContains)
                     {
                         using (var streamWriter = new StreamWriter(new FileStream($@"{APPath}\audio.ini", FileMode.Append)))
                         {
@@ -206,15 +212,7 @@ namespace HBMLRunFile
                 }
 
                 //Запуск SA-MP
-                if (ip != "" && nickname != "")
-                {
-                    Process p1 = new Process();
-                    p1.StartInfo.FileName = "cmd";
-                    p1.StartInfo.Arguments = "/c \"" + $@"{gtaPath}\samp.exe" + "\" " + ip;
-                    p1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    p1.Start();
-                }
-                else Process.Start($@"{gtaPath}\samp.exe");
+                Run(nickname, ip, gtaPath);
 
                 //CustomSounds после запуска SA-MP (если не вызвалось исключение)
                 if (csounds == 1)
@@ -237,15 +235,7 @@ namespace HBMLRunFile
                                 "Запустить лаунчер/GTA без замены файлов?", "Ошибка", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    if (ip != "" && nickname != "")
-                    {
-                        Process p1 = new Process();
-                        p1.StartInfo.FileName = "cmd";
-                        p1.StartInfo.Arguments = "/c \"" + $@"{gtaPath}\samp.exe" + "\" " + ip;
-                        p1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                        p1.Start();
-                    }
-                    else Process.Start($@"{gtaPath}\samp.exe");
+                    Run(nickname, ip, gtaPath);
                     if (csounds == 1)
                     {
                         while (Directory.GetFiles($@"{APPath}\audiopacks\default_pack").Length < filesCount)
@@ -261,6 +251,19 @@ namespace HBMLRunFile
                     }
                 }
             }
+        }
+
+        static void Run(string nickname, string ip, string gtaPath)
+        {
+            if (ip != "" && nickname != "")
+            {
+                if (!File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\run.exe"))
+                    File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\run.exe", Resources.run);
+                string[] temp = ip.Split(':');
+                File.WriteAllLines($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\run.ini", temp);
+                Process.Start($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\run.exe");
+            }
+            else Process.Start($@"{gtaPath}\samp.exe");
         }
 
         static string CutName(string str)

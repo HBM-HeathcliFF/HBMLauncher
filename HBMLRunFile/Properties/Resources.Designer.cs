@@ -63,6 +63,16 @@ namespace HBMLRunFile.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] run {
+            get {
+                object obj = ResourceManager.GetObject("run", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] SightDistance_by_0x688 {
             get {
                 object obj = ResourceManager.GetObject("SightDistance_by_0x688", resourceCulture);
