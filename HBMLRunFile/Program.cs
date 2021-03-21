@@ -10,12 +10,6 @@ namespace HBMLRunFile
 {
     static class Program
     {
-        enum Start
-        {
-            GAME,
-            LAUNCHER
-        };
-
         [STAThread]
         static void Main()
         {
@@ -257,11 +251,11 @@ namespace HBMLRunFile
         {
             if (ip != "" && nickname != "")
             {
-                if (!File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\run.exe"))
-                    File.WriteAllBytes($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\run.exe", Resources.run);
-                string[] temp = ip.Split(':');
-                File.WriteAllLines($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\run.ini", temp);
-                Process.Start($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\run.exe");
+                Process p1 = new Process();
+                p1.StartInfo.FileName = "cmd";
+                p1.StartInfo.Arguments = "/c \"" + $@"{gtaPath}\samp.exe" + "\" " + ip;
+                p1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                p1.Start();
             }
             else Process.Start($@"{gtaPath}\samp.exe");
         }
