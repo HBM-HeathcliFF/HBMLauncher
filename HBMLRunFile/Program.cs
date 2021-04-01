@@ -251,11 +251,27 @@ namespace HBMLRunFile
         {
             if (ip != "" && nickname != "")
             {
+                string[] temp = new string[3];
+                temp[0] = ip.Split(':')[0];
+                temp[1] = ip.Split(':')[1];
+                temp[2] = nickname;
+                File.WriteAllLines($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\run.ini", temp);
+                File.WriteAllBytes($@"{gtaPath}\Injector.exe", Resources.Injector);
+
                 Process p1 = new Process();
                 p1.StartInfo.FileName = "cmd";
-                p1.StartInfo.Arguments = "/c \"" + $@"{gtaPath}\samp.exe" + "\" " + ip;
+                p1.StartInfo.Arguments = "/c cd /d \"" + gtaPath + "\" & Injector.exe";
                 p1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 p1.Start();
+
+                Thread.Sleep(5000);
+
+                while (Process.GetProcessesByName("Injector").Length > 0)
+                {
+                    Thread.Sleep(3000);
+                }
+
+                File.Delete($@"{gtaPath}\Injector.exe");
             }
             else Process.Start($@"{gtaPath}\samp.exe");
         }

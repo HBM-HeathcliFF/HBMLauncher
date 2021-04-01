@@ -63,9 +63,9 @@ namespace HBMLRunFile.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] run {
+        internal static byte[] Injector {
             get {
-                object obj = ResourceManager.GetObject("run", resourceCulture);
+                object obj = ResourceManager.GetObject("Injector", resourceCulture);
                 return ((byte[])(obj));
             }
         }
