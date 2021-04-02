@@ -29,40 +29,232 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.cleop = new System.Windows.Forms.CheckBox();
-            this.position = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.csoundsCB = new System.Windows.Forms.CheckBox();
             this.MenuVertical = new System.Windows.Forms.Panel();
-            this.logoBtn = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ShowBtn = new System.Windows.Forms.Button();
-            this.DeleteBtn = new System.Windows.Forms.Button();
-            this.SaveBtn = new System.Windows.Forms.Button();
-            this.EditBtn = new System.Windows.Forms.Button();
-            this.panelContent = new System.Windows.Forms.Panel();
-            this.sensfixCB = new System.Windows.Forms.CheckBox();
-            this.binderCB = new System.Windows.Forms.CheckBox();
-            this.macrosCB = new System.Windows.Forms.CheckBox();
-            this.radarCB = new System.Windows.Forms.CheckBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.MenuHorizontal = new System.Windows.Forms.Panel();
             this.MaxBtn = new System.Windows.Forms.PictureBox();
             this.MinBtn = new System.Windows.Forms.PictureBox();
             this.NormalBtn = new System.Windows.Forms.PictureBox();
             this.CloseBtn = new System.Windows.Forms.PictureBox();
             this.MenuBtn = new System.Windows.Forms.PictureBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.panelContent = new System.Windows.Forms.Panel();
+            this.sensfixCB = new System.Windows.Forms.CheckBox();
+            this.binderCB = new System.Windows.Forms.CheckBox();
+            this.macrosCB = new System.Windows.Forms.CheckBox();
+            this.radarCB = new System.Windows.Forms.CheckBox();
+            this.csoundsCB = new System.Windows.Forms.CheckBox();
+            this.cleop = new System.Windows.Forms.CheckBox();
+            this.position = new System.Windows.Forms.Label();
+            this.logoBtn = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ShowBtn = new System.Windows.Forms.Button();
+            this.DeleteBtn = new System.Windows.Forms.Button();
+            this.SaveBtn = new System.Windows.Forms.Button();
+            this.EditBtn = new System.Windows.Forms.Button();
             this.MenuVertical.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logoBtn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panelContent.SuspendLayout();
             this.MenuHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MaxBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NormalBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CloseBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuBtn)).BeginInit();
+            this.panelContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "exe";
+            this.saveFileDialog1.Filter = "Ярлык (*.lnk)|*.*";
+            this.saveFileDialog1.InitialDirectory = "C:\\\\";
+            this.saveFileDialog1.Title = "Создание ярлыка";
+            // 
+            // MenuVertical
+            // 
+            this.MenuVertical.BackColor = System.Drawing.Color.Black;
+            this.MenuVertical.Controls.Add(this.logoBtn);
+            this.MenuVertical.Controls.Add(this.pictureBox1);
+            this.MenuVertical.Controls.Add(this.ShowBtn);
+            this.MenuVertical.Controls.Add(this.DeleteBtn);
+            this.MenuVertical.Controls.Add(this.SaveBtn);
+            this.MenuVertical.Controls.Add(this.EditBtn);
+            this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
+            this.MenuVertical.Location = new System.Drawing.Point(0, 0);
+            this.MenuVertical.Name = "MenuVertical";
+            this.MenuVertical.Size = new System.Drawing.Size(40, 270);
+            this.MenuVertical.TabIndex = 14;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.DefaultExt = "ini";
+            this.openFileDialog1.FileName = "sensfix.ini";
+            this.openFileDialog1.Filter = "Конфигурационный файл(*.ini)|*.ini";
+            this.openFileDialog1.InitialDirectory = "@\"C:\\\"";
+            this.openFileDialog1.Title = "Укажите путь к sensfix.ini";
+            // 
+            // MenuHorizontal
+            // 
+            this.MenuHorizontal.BackgroundImage = global::HBMLauncher.Properties.Resources.HeaderMain;
+            this.MenuHorizontal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MenuHorizontal.Controls.Add(this.MaxBtn);
+            this.MenuHorizontal.Controls.Add(this.MinBtn);
+            this.MenuHorizontal.Controls.Add(this.NormalBtn);
+            this.MenuHorizontal.Controls.Add(this.CloseBtn);
+            this.MenuHorizontal.Controls.Add(this.MenuBtn);
+            this.MenuHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MenuHorizontal.Location = new System.Drawing.Point(40, 0);
+            this.MenuHorizontal.Name = "MenuHorizontal";
+            this.MenuHorizontal.Size = new System.Drawing.Size(485, 33);
+            this.MenuHorizontal.TabIndex = 15;
+            this.MenuHorizontal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuHorizontal_MouseDown);
+            // 
+            // MaxBtn
+            // 
+            this.MaxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MaxBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Max;
+            this.MaxBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.MaxBtn.Location = new System.Drawing.Point(442, 3);
+            this.MaxBtn.Name = "MaxBtn";
+            this.MaxBtn.Size = new System.Drawing.Size(16, 16);
+            this.MaxBtn.TabIndex = 16;
+            this.MaxBtn.TabStop = false;
+            this.MaxBtn.Click += new System.EventHandler(this.MaxBtn_Click);
+            // 
+            // MinBtn
+            // 
+            this.MinBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MinBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Min;
+            this.MinBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.MinBtn.Location = new System.Drawing.Point(421, 3);
+            this.MinBtn.Name = "MinBtn";
+            this.MinBtn.Size = new System.Drawing.Size(16, 16);
+            this.MinBtn.TabIndex = 15;
+            this.MinBtn.TabStop = false;
+            this.MinBtn.Click += new System.EventHandler(this.MinBtn_Click);
+            // 
+            // NormalBtn
+            // 
+            this.NormalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NormalBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Normal;
+            this.NormalBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.NormalBtn.Location = new System.Drawing.Point(442, 3);
+            this.NormalBtn.Name = "NormalBtn";
+            this.NormalBtn.Size = new System.Drawing.Size(16, 16);
+            this.NormalBtn.TabIndex = 14;
+            this.NormalBtn.TabStop = false;
+            this.NormalBtn.Visible = false;
+            this.NormalBtn.Click += new System.EventHandler(this.NormalBtn_Click);
+            // 
+            // CloseBtn
+            // 
+            this.CloseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Close;
+            this.CloseBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.CloseBtn.Location = new System.Drawing.Point(463, 3);
+            this.CloseBtn.Name = "CloseBtn";
+            this.CloseBtn.Size = new System.Drawing.Size(16, 16);
+            this.CloseBtn.TabIndex = 13;
+            this.CloseBtn.TabStop = false;
+            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
+            // 
+            // MenuBtn
+            // 
+            this.MenuBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MenuBtn.BackgroundImage")));
+            this.MenuBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.MenuBtn.Location = new System.Drawing.Point(4, 1);
+            this.MenuBtn.Name = "MenuBtn";
+            this.MenuBtn.Size = new System.Drawing.Size(30, 30);
+            this.MenuBtn.TabIndex = 13;
+            this.MenuBtn.TabStop = false;
+            this.MenuBtn.Click += new System.EventHandler(this.MenuBtn_Click);
+            // 
+            // panelContent
+            // 
+            this.panelContent.BackColor = System.Drawing.Color.Transparent;
+            this.panelContent.BackgroundImage = global::HBMLauncher.Properties.Resources.ContentMain;
+            this.panelContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelContent.Controls.Add(this.sensfixCB);
+            this.panelContent.Controls.Add(this.binderCB);
+            this.panelContent.Controls.Add(this.macrosCB);
+            this.panelContent.Controls.Add(this.radarCB);
+            this.panelContent.Controls.Add(this.csoundsCB);
+            this.panelContent.Controls.Add(this.cleop);
+            this.panelContent.Controls.Add(this.position);
+            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContent.Location = new System.Drawing.Point(40, 0);
+            this.panelContent.Name = "panelContent";
+            this.panelContent.Size = new System.Drawing.Size(485, 270);
+            this.panelContent.TabIndex = 15;
+            // 
+            // sensfixCB
+            // 
+            this.sensfixCB.AutoSize = true;
+            this.sensfixCB.BackColor = System.Drawing.Color.Transparent;
+            this.sensfixCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sensfixCB.ForeColor = System.Drawing.Color.Black;
+            this.sensfixCB.Location = new System.Drawing.Point(4, 169);
+            this.sensfixCB.Name = "sensfixCB";
+            this.sensfixCB.Size = new System.Drawing.Size(223, 20);
+            this.sensfixCB.TabIndex = 16;
+            this.sensfixCB.Text = "Запомнить настройки Sensfix";
+            this.sensfixCB.UseVisualStyleBackColor = false;
+            this.sensfixCB.CheckedChanged += new System.EventHandler(this.SensfixCB_CheckedChanged);
+            // 
+            // binderCB
+            // 
+            this.binderCB.AutoSize = true;
+            this.binderCB.BackColor = System.Drawing.Color.Transparent;
+            this.binderCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.binderCB.ForeColor = System.Drawing.Color.Black;
+            this.binderCB.Location = new System.Drawing.Point(4, 133);
+            this.binderCB.Name = "binderCB";
+            this.binderCB.Size = new System.Drawing.Size(95, 20);
+            this.binderCB.TabIndex = 15;
+            this.binderCB.Text = "Aci Binder";
+            this.binderCB.UseVisualStyleBackColor = false;
+            this.binderCB.CheckedChanged += new System.EventHandler(this.BinderCB_CheckedChanged);
+            // 
+            // macrosCB
+            // 
+            this.macrosCB.AutoSize = true;
+            this.macrosCB.BackColor = System.Drawing.Color.Transparent;
+            this.macrosCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.macrosCB.ForeColor = System.Drawing.Color.Black;
+            this.macrosCB.Location = new System.Drawing.Point(4, 151);
+            this.macrosCB.Name = "macrosCB";
+            this.macrosCB.Size = new System.Drawing.Size(108, 20);
+            this.macrosCB.TabIndex = 14;
+            this.macrosCB.Text = "HBM Macros";
+            this.macrosCB.UseVisualStyleBackColor = false;
+            this.macrosCB.CheckedChanged += new System.EventHandler(this.MacrosCB_CheckedChanged);
+            // 
+            // radarCB
+            // 
+            this.radarCB.AutoSize = true;
+            this.radarCB.BackColor = System.Drawing.Color.Transparent;
+            this.radarCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radarCB.ForeColor = System.Drawing.Color.Black;
+            this.radarCB.Location = new System.Drawing.Point(4, 115);
+            this.radarCB.Name = "radarCB";
+            this.radarCB.Size = new System.Drawing.Size(168, 20);
+            this.radarCB.TabIndex = 13;
+            this.radarCB.Text = "Стандартный радар";
+            this.radarCB.UseVisualStyleBackColor = false;
+            // 
+            // csoundsCB
+            // 
+            this.csoundsCB.AutoSize = true;
+            this.csoundsCB.BackColor = System.Drawing.Color.Transparent;
+            this.csoundsCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.csoundsCB.ForeColor = System.Drawing.Color.Black;
+            this.csoundsCB.Location = new System.Drawing.Point(4, 79);
+            this.csoundsCB.Name = "csoundsCB";
+            this.csoundsCB.Size = new System.Drawing.Size(125, 20);
+            this.csoundsCB.TabIndex = 12;
+            this.csoundsCB.Text = "Custom Sounds";
+            this.csoundsCB.UseVisualStyleBackColor = false;
             // 
             // cleop
             // 
@@ -88,41 +280,6 @@
             this.position.Size = new System.Drawing.Size(204, 16);
             this.position.TabIndex = 10;
             this.position.Text = "Текущее расположение GTA:";
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.DefaultExt = "exe";
-            this.saveFileDialog1.Filter = "Ярлык (*.lnk)|*.*";
-            this.saveFileDialog1.InitialDirectory = "C:\\\\";
-            this.saveFileDialog1.Title = "Создание ярлыка";
-            // 
-            // csoundsCB
-            // 
-            this.csoundsCB.AutoSize = true;
-            this.csoundsCB.BackColor = System.Drawing.Color.Transparent;
-            this.csoundsCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.csoundsCB.ForeColor = System.Drawing.Color.Black;
-            this.csoundsCB.Location = new System.Drawing.Point(4, 79);
-            this.csoundsCB.Name = "csoundsCB";
-            this.csoundsCB.Size = new System.Drawing.Size(125, 20);
-            this.csoundsCB.TabIndex = 12;
-            this.csoundsCB.Text = "Custom Sounds";
-            this.csoundsCB.UseVisualStyleBackColor = false;
-            // 
-            // MenuVertical
-            // 
-            this.MenuVertical.BackColor = System.Drawing.Color.Black;
-            this.MenuVertical.Controls.Add(this.logoBtn);
-            this.MenuVertical.Controls.Add(this.pictureBox1);
-            this.MenuVertical.Controls.Add(this.ShowBtn);
-            this.MenuVertical.Controls.Add(this.DeleteBtn);
-            this.MenuVertical.Controls.Add(this.SaveBtn);
-            this.MenuVertical.Controls.Add(this.EditBtn);
-            this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
-            this.MenuVertical.Location = new System.Drawing.Point(0, 0);
-            this.MenuVertical.Name = "MenuVertical";
-            this.MenuVertical.Size = new System.Drawing.Size(40, 270);
-            this.MenuVertical.TabIndex = 14;
             // 
             // logoBtn
             // 
@@ -219,159 +376,6 @@
             this.EditBtn.UseVisualStyleBackColor = false;
             this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
-            // panelContent
-            // 
-            this.panelContent.BackColor = System.Drawing.Color.Transparent;
-            this.panelContent.Controls.Add(this.sensfixCB);
-            this.panelContent.Controls.Add(this.binderCB);
-            this.panelContent.Controls.Add(this.macrosCB);
-            this.panelContent.Controls.Add(this.radarCB);
-            this.panelContent.Controls.Add(this.csoundsCB);
-            this.panelContent.Controls.Add(this.cleop);
-            this.panelContent.Controls.Add(this.position);
-            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(40, 0);
-            this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(485, 270);
-            this.panelContent.TabIndex = 15;
-            // 
-            // sensfixCB
-            // 
-            this.sensfixCB.AutoSize = true;
-            this.sensfixCB.BackColor = System.Drawing.Color.Transparent;
-            this.sensfixCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sensfixCB.ForeColor = System.Drawing.Color.Black;
-            this.sensfixCB.Location = new System.Drawing.Point(4, 169);
-            this.sensfixCB.Name = "sensfixCB";
-            this.sensfixCB.Size = new System.Drawing.Size(223, 20);
-            this.sensfixCB.TabIndex = 16;
-            this.sensfixCB.Text = "Запомнить настройки Sensfix";
-            this.sensfixCB.UseVisualStyleBackColor = false;
-            this.sensfixCB.CheckedChanged += new System.EventHandler(this.SensfixCB_CheckedChanged);
-            // 
-            // binderCB
-            // 
-            this.binderCB.AutoSize = true;
-            this.binderCB.BackColor = System.Drawing.Color.Transparent;
-            this.binderCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.binderCB.ForeColor = System.Drawing.Color.Black;
-            this.binderCB.Location = new System.Drawing.Point(4, 133);
-            this.binderCB.Name = "binderCB";
-            this.binderCB.Size = new System.Drawing.Size(95, 20);
-            this.binderCB.TabIndex = 15;
-            this.binderCB.Text = "Aci Binder";
-            this.binderCB.UseVisualStyleBackColor = false;
-            this.binderCB.CheckedChanged += new System.EventHandler(this.BinderCB_CheckedChanged);
-            // 
-            // macrosCB
-            // 
-            this.macrosCB.AutoSize = true;
-            this.macrosCB.BackColor = System.Drawing.Color.Transparent;
-            this.macrosCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.macrosCB.ForeColor = System.Drawing.Color.Black;
-            this.macrosCB.Location = new System.Drawing.Point(4, 151);
-            this.macrosCB.Name = "macrosCB";
-            this.macrosCB.Size = new System.Drawing.Size(108, 20);
-            this.macrosCB.TabIndex = 14;
-            this.macrosCB.Text = "HBM Macros";
-            this.macrosCB.UseVisualStyleBackColor = false;
-            this.macrosCB.CheckedChanged += new System.EventHandler(this.MacrosCB_CheckedChanged);
-            // 
-            // radarCB
-            // 
-            this.radarCB.AutoSize = true;
-            this.radarCB.BackColor = System.Drawing.Color.Transparent;
-            this.radarCB.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radarCB.ForeColor = System.Drawing.Color.Black;
-            this.radarCB.Location = new System.Drawing.Point(4, 115);
-            this.radarCB.Name = "radarCB";
-            this.radarCB.Size = new System.Drawing.Size(168, 20);
-            this.radarCB.TabIndex = 13;
-            this.radarCB.Text = "Стандартный радар";
-            this.radarCB.UseVisualStyleBackColor = false;
-            // 
-            // MenuHorizontal
-            // 
-            this.MenuHorizontal.Controls.Add(this.MaxBtn);
-            this.MenuHorizontal.Controls.Add(this.MinBtn);
-            this.MenuHorizontal.Controls.Add(this.NormalBtn);
-            this.MenuHorizontal.Controls.Add(this.CloseBtn);
-            this.MenuHorizontal.Controls.Add(this.MenuBtn);
-            this.MenuHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MenuHorizontal.Location = new System.Drawing.Point(40, 0);
-            this.MenuHorizontal.Name = "MenuHorizontal";
-            this.MenuHorizontal.Size = new System.Drawing.Size(485, 33);
-            this.MenuHorizontal.TabIndex = 15;
-            this.MenuHorizontal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuHorizontal_MouseDown);
-            // 
-            // MaxBtn
-            // 
-            this.MaxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MaxBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Max;
-            this.MaxBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.MaxBtn.Location = new System.Drawing.Point(442, 3);
-            this.MaxBtn.Name = "MaxBtn";
-            this.MaxBtn.Size = new System.Drawing.Size(16, 16);
-            this.MaxBtn.TabIndex = 16;
-            this.MaxBtn.TabStop = false;
-            this.MaxBtn.Click += new System.EventHandler(this.MaxBtn_Click);
-            // 
-            // MinBtn
-            // 
-            this.MinBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MinBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Min;
-            this.MinBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.MinBtn.Location = new System.Drawing.Point(421, 3);
-            this.MinBtn.Name = "MinBtn";
-            this.MinBtn.Size = new System.Drawing.Size(16, 16);
-            this.MinBtn.TabIndex = 15;
-            this.MinBtn.TabStop = false;
-            this.MinBtn.Click += new System.EventHandler(this.MinBtn_Click);
-            // 
-            // NormalBtn
-            // 
-            this.NormalBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NormalBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Normal;
-            this.NormalBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.NormalBtn.Location = new System.Drawing.Point(442, 3);
-            this.NormalBtn.Name = "NormalBtn";
-            this.NormalBtn.Size = new System.Drawing.Size(16, 16);
-            this.NormalBtn.TabIndex = 14;
-            this.NormalBtn.TabStop = false;
-            this.NormalBtn.Visible = false;
-            this.NormalBtn.Click += new System.EventHandler(this.NormalBtn_Click);
-            // 
-            // CloseBtn
-            // 
-            this.CloseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.Close;
-            this.CloseBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.CloseBtn.Location = new System.Drawing.Point(463, 3);
-            this.CloseBtn.Name = "CloseBtn";
-            this.CloseBtn.Size = new System.Drawing.Size(16, 16);
-            this.CloseBtn.TabIndex = 13;
-            this.CloseBtn.TabStop = false;
-            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
-            // 
-            // MenuBtn
-            // 
-            this.MenuBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MenuBtn.BackgroundImage")));
-            this.MenuBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.MenuBtn.Location = new System.Drawing.Point(4, 1);
-            this.MenuBtn.Name = "MenuBtn";
-            this.MenuBtn.Size = new System.Drawing.Size(30, 30);
-            this.MenuBtn.TabIndex = 13;
-            this.MenuBtn.TabStop = false;
-            this.MenuBtn.Click += new System.EventHandler(this.MenuBtn_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.DefaultExt = "ini";
-            this.openFileDialog1.FileName = "sensfix.ini";
-            this.openFileDialog1.Filter = "Конфигурационный файл(*.ini)|*.ini";
-            this.openFileDialog1.InitialDirectory = "@\"C:\\\"";
-            this.openFileDialog1.Title = "Укажите путь к sensfix.ini";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,16 +395,16 @@
             this.Text = "HBM Launcher 2.1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MenuVertical.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.logoBtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panelContent.ResumeLayout(false);
-            this.panelContent.PerformLayout();
             this.MenuHorizontal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MaxBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NormalBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CloseBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuBtn)).EndInit();
+            this.panelContent.ResumeLayout(false);
+            this.panelContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -83,6 +83,16 @@ namespace HBMLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ContentMain {
+            get {
+                object obj = ResourceManager.GetObject("ContentMain", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Delete {
             get {
                 object obj = ResourceManager.GetObject("Delete", resourceCulture);
@@ -176,6 +186,16 @@ namespace HBMLauncher.Properties {
         internal static System.Drawing.Bitmap header {
             get {
                 object obj = ResourceManager.GetObject("header", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HeaderMain {
+            get {
+                object obj = ResourceManager.GetObject("HeaderMain", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

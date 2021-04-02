@@ -32,23 +32,23 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.info = new System.Windows.Forms.Label();
             this.leftPanel = new System.Windows.Forms.Panel();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.menuHorizontal = new System.Windows.Forms.Panel();
+            this.editBtn = new System.Windows.Forms.PictureBox();
+            this.removeBtn = new System.Windows.Forms.PictureBox();
             this.normalBtn = new System.Windows.Forms.PictureBox();
             this.closeBtn = new System.Windows.Forms.PictureBox();
             this.minBtn = new System.Windows.Forms.PictureBox();
             this.maxBtn = new System.Windows.Forms.PictureBox();
-            this.editBtn = new System.Windows.Forms.PictureBox();
-            this.removeBtn = new System.Windows.Forms.PictureBox();
+            this.logo = new System.Windows.Forms.PictureBox();
             this.leftPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.menuHorizontal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.editBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.removeBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.normalBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxBtn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.editBtn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.removeBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox1
@@ -89,18 +89,10 @@
             this.leftPanel.Size = new System.Drawing.Size(150, 289);
             this.leftPanel.TabIndex = 4;
             // 
-            // logo
-            // 
-            this.logo.BackgroundImage = global::HBMLauncher.Properties.Resources.logo;
-            this.logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.logo.Location = new System.Drawing.Point(5, 5);
-            this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(140, 30);
-            this.logo.TabIndex = 5;
-            this.logo.TabStop = false;
-            // 
             // menuHorizontal
             // 
+            this.menuHorizontal.BackgroundImage = global::HBMLauncher.Properties.Resources.HeaderMain;
+            this.menuHorizontal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.menuHorizontal.Controls.Add(this.normalBtn);
             this.menuHorizontal.Controls.Add(this.closeBtn);
             this.menuHorizontal.Controls.Add(this.minBtn);
@@ -111,6 +103,34 @@
             this.menuHorizontal.Size = new System.Drawing.Size(350, 23);
             this.menuHorizontal.TabIndex = 9;
             this.menuHorizontal.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuHorizontal_MouseDown);
+            // 
+            // editBtn
+            // 
+            this.editBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.EditBN;
+            this.editBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.editBtn.Enabled = false;
+            this.editBtn.Location = new System.Drawing.Point(445, 94);
+            this.editBtn.Name = "editBtn";
+            this.editBtn.Size = new System.Drawing.Size(50, 29);
+            this.editBtn.TabIndex = 11;
+            this.editBtn.TabStop = false;
+            this.editBtn.Click += new System.EventHandler(this.EditBtn_Click);
+            this.editBtn.MouseEnter += new System.EventHandler(this.EditBtn_MouseEnter);
+            this.editBtn.MouseLeave += new System.EventHandler(this.EditBtn_MouseLeave);
+            // 
+            // removeBtn
+            // 
+            this.removeBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.DeleteBN;
+            this.removeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.removeBtn.Enabled = false;
+            this.removeBtn.Location = new System.Drawing.Point(445, 63);
+            this.removeBtn.Name = "removeBtn";
+            this.removeBtn.Size = new System.Drawing.Size(50, 29);
+            this.removeBtn.TabIndex = 10;
+            this.removeBtn.TabStop = false;
+            this.removeBtn.Click += new System.EventHandler(this.RemoveBtn_Click);
+            this.removeBtn.MouseEnter += new System.EventHandler(this.RemoveBtn_MouseEnter);
+            this.removeBtn.MouseLeave += new System.EventHandler(this.RemoveBtn_MouseLeave);
             // 
             // normalBtn
             // 
@@ -161,39 +181,23 @@
             this.maxBtn.TabStop = false;
             this.maxBtn.Click += new System.EventHandler(this.MaxBtn_Click);
             // 
-            // editBtn
+            // logo
             // 
-            this.editBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.EditBN;
-            this.editBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.editBtn.Enabled = false;
-            this.editBtn.Location = new System.Drawing.Point(445, 94);
-            this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(50, 29);
-            this.editBtn.TabIndex = 11;
-            this.editBtn.TabStop = false;
-            this.editBtn.Click += new System.EventHandler(this.EditBtn_Click);
-            this.editBtn.MouseEnter += new System.EventHandler(this.EditBtn_MouseEnter);
-            this.editBtn.MouseLeave += new System.EventHandler(this.EditBtn_MouseLeave);
-            // 
-            // removeBtn
-            // 
-            this.removeBtn.BackgroundImage = global::HBMLauncher.Properties.Resources.DeleteBN;
-            this.removeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.removeBtn.Enabled = false;
-            this.removeBtn.Location = new System.Drawing.Point(445, 63);
-            this.removeBtn.Name = "removeBtn";
-            this.removeBtn.Size = new System.Drawing.Size(50, 29);
-            this.removeBtn.TabIndex = 10;
-            this.removeBtn.TabStop = false;
-            this.removeBtn.Click += new System.EventHandler(this.RemoveBtn_Click);
-            this.removeBtn.MouseEnter += new System.EventHandler(this.RemoveBtn_MouseEnter);
-            this.removeBtn.MouseLeave += new System.EventHandler(this.RemoveBtn_MouseLeave);
+            this.logo.BackgroundImage = global::HBMLauncher.Properties.Resources.logo;
+            this.logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.logo.Location = new System.Drawing.Point(5, 5);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(140, 30);
+            this.logo.TabIndex = 5;
+            this.logo.TabStop = false;
             // 
             // Show
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::HBMLauncher.Properties.Resources.ContentMain;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(500, 289);
             this.Controls.Add(this.editBtn);
             this.Controls.Add(this.removeBtn);
@@ -208,14 +212,14 @@
             this.Text = "HBM Launcher 2.1";
             this.Load += new System.EventHandler(this.Show_Load);
             this.leftPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.menuHorizontal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.editBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.removeBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.normalBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxBtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.editBtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.removeBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
 
         }
