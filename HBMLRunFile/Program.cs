@@ -1,10 +1,7 @@
 ﻿using HBMLRunFile.Properties;
-using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
-using System.Windows.Forms;
 
 namespace HBMLRunFile
 {
@@ -19,11 +16,11 @@ namespace HBMLRunFile
             //Поиск сейва
             int countSaves = 0;
             string filepath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\HBMLauncher\saves"))
+            using (Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\HBMLauncher\saves"))
                 countSaves = (int)key.GetValue("count");
             for (int i = 1; i < countSaves + 1; i++)
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\saves\save{i}"))
+                using (Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\saves\save{i}"))
                 {
                     if (key.GetValue("filepath").ToString() == filepath)
                     {
@@ -34,7 +31,7 @@ namespace HBMLRunFile
             }
 
             //Получение данных из найденного сейва
-            using (RegistryKey key = Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\saves\save{save}"))
+            using (Microsoft.Win32.RegistryKey key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey($@"Software\HBMLauncher\saves\save{save}"))
             {
                 gtaPath = (string)key.GetValue("path");
                 cleop = Convert.ToInt32(key.GetValue("cleop"));
@@ -48,9 +45,9 @@ namespace HBMLRunFile
             }
 
             //Передача значений в SA-MP лаунчер через реестр
-            Registry.CurrentUser.CreateSubKey(@"Software\SAMP").SetValue("gta_sa_exe", $@"{gtaPath}\gta_sa.exe");
+            Microsoft.Win32.Registry.CurrentUser.CreateSubKey(@"Software\SAMP").SetValue("gta_sa_exe", $@"{gtaPath}\gta_sa.exe");
             if (nickname != "")
-                Registry.CurrentUser.CreateSubKey(@"Software\SAMP").SetValue("PlayerName", nickname);
+                Microsoft.Win32.Registry.CurrentUser.CreateSubKey(@"Software\SAMP").SetValue("PlayerName", nickname);
 
             //CustomSounds до запуска SA-MP (без исключений)
             string[] text = null, def_vals = null, filesToCopy = null;
@@ -213,34 +210,34 @@ namespace HBMLRunFile
                 {
                     while (Directory.GetFiles($@"{APPath}\audiopacks\default_pack").Length < filesCount)
                     {
-                        Thread.Sleep(5000);
+                        System.Threading.Thread.Sleep(5000);
                     }
                     foreach (var file1 in filesToCopy)
                     {
                         File.Copy(file1, $@"{APPath}\audiopacks\default_pack\{CutName(file1)}", true);
                     }
-                    Thread.Sleep(5000);
+                    System.Threading.Thread.Sleep(5000);
                     File.WriteAllLines($@"{APPath}\audiopacks\default_pack\default_pack.ini", def_vals);
                 }
             }
             catch (Exception)
             {
-                DialogResult result = MessageBox.Show("Не удалось внести изменения в указанную GTA, т.к. она уже открыта.\n" +
-                                "Запустить лаунчер/GTA без замены файлов?", "Ошибка", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                System.Windows.Forms.DialogResult result = System.Windows.Forms.MessageBox.Show("Не удалось внести изменения в указанную GTA, т.к. она уже открыта.\n" +
+                                "Запустить лаунчер/GTA без замены файлов?", "Ошибка", System.Windows.Forms.MessageBoxButtons.YesNo);
+                if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     Run(nickname, ip, gtaPath);
                     if (csounds == 1)
                     {
                         while (Directory.GetFiles($@"{APPath}\audiopacks\default_pack").Length < filesCount)
                         {
-                            Thread.Sleep(5000);
+                            System.Threading.Thread.Sleep(5000);
                         }
                         foreach (var file1 in filesToCopy)
                         {
                             File.Copy(file1, $@"{APPath}\audiopacks\default_pack\{CutName(file1)}", true);
                         }
-                        Thread.Sleep(5000);
+                        System.Threading.Thread.Sleep(5000);
                         File.WriteAllLines($@"{APPath}\audiopacks\default_pack\default_pack.ini", def_vals);
                     }
                 }
@@ -255,23 +252,20 @@ namespace HBMLRunFile
                 temp[0] = ip.Split(':')[0];
                 temp[1] = ip.Split(':')[1];
                 temp[2] = nickname;
-                File.WriteAllLines($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\run.ini", temp);
-                File.WriteAllBytes($@"{gtaPath}\Injector.exe", Resources.Injector);
+                File.WriteAllLines($@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\HBMLauncher\Resources\run.ini", temp, System.Text.Encoding.GetEncoding(1251));
+                File.WriteAllBytes($@"{gtaPath}\HBMInjector.exe", Resources.HBMInjector);
 
                 Process p1 = new Process();
                 p1.StartInfo.FileName = "cmd";
-                p1.StartInfo.Arguments = "/c cd /d \"" + gtaPath + "\" & Injector.exe";
+                p1.StartInfo.Arguments = "/c cd /d \"" + gtaPath + "\" & HBMInjector.exe";
                 p1.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                p1.Start();
-
-                Thread.Sleep(5000);
-
-                while (Process.GetProcessesByName("Injector").Length > 0)
+                p1.EnableRaisingEvents = true;
+                p1.Exited += (s, ev) =>
                 {
-                    Thread.Sleep(3000);
-                }
-
-                File.Delete($@"{gtaPath}\Injector.exe");
+                    while (Process.GetProcessesByName("HBMInjector").Length > 0) {}
+                    File.Delete($@"{gtaPath}\HBMInjector.exe");
+                };
+                p1.Start();
             }
             else Process.Start($@"{gtaPath}\samp.exe");
         }

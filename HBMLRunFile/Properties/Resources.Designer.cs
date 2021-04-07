@@ -63,9 +63,9 @@ namespace HBMLRunFile.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Injector {
+        internal static byte[] HBMInjector {
             get {
-                object obj = ResourceManager.GetObject("Injector", resourceCulture);
+                object obj = ResourceManager.GetObject("HBMInjector", resourceCulture);
                 return ((byte[])(obj));
             }
         }

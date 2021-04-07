@@ -80,7 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon1.ico" />
-    <None Include="Resources\Injector.exe" />
+    <None Include="Resources\HBMInjector.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
